@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html lang="it">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Emanuele Gramisci</title>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+<style>
+    :root {
+      --bordeaux: #800020;
+      --background: #ffffff;
+      --card-bg: #f1f1f1;
+      --text-color: #111;
+      --accent: #800020;
+      --event-bg: #2a2a2a;
+      --event-text: #fff;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--background);
+      color: var(--text-color);
+      margin: 0;
+    }
+
+    header {
+      background-color: var(--bordeaux);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+    }
+
+    .profile-pic {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .bio {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .cv-button {
+      display: block;
+      margin: 1rem auto;
+      background-color: var(--accent);
+      color: #fff;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      width: max-content;
+    }
+
+    .event {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background: var(--event-bg);
+      color: var(--event-text);
+      border-left: 4px solid var(--accent);
+      border-radius: 8px;
+    }
+
+    .contact-button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .contact-button {
+      background-color: var(--accent);
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      color: white;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s ease;
+      transform: translateY(0);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .contact-button:hover {
+      background-color: #a0002a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+    }
+
+    .contact-button:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .contact-button a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-button i {
+      transition: transform 0.3s ease;
+    }
+
+    .contact-button:hover i {
+      animation: pulse 0.4s ease-in-out;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 2px solid var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #lang-switcher {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
+
+    #lang-switcher button {
+      background: var(--card-bg);
+      border: 2px solid var(--accent);
+      color: var(--text-color);
+      margin-right: 5px;
+      padding: 5px 10px;
+      border-radius: 15px;
+      cursor: pointer;
+    }
+
+    #lang-switcher button:hover {
+      background: var(--accent);
+      color: var(--background);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .profile-pic {
+        width: 120px;
+        height: 120px;
+      }
+
+      .contact-button {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  
+
+    .cv-wrapper {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+    
+
+    .profile-pic {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px var(--accent);
+    }
+    
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border: 5px solid var(--accent);
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--accent);
+      animation: zoomIn 0.3s ease;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+
+    .event-link {
+      text-decoration: none;
+      display: block;
+    }
+
+    .event-link .event:hover {
+      background: #a0002a;
+      cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+<div id="lang-switcher">
+<button class="contact-button" onclick="setLanguage('it')">IT</button>
+<button class="contact-button" onclick="setLanguage('en')">EN</button>
+</div>
+<button class="contact-button" id="theme-toggle">🌓</button>
+<header>
+<a href="#" onclick="openModal('DSC_3773.JPG'); return false;"><img alt="Foto di Emanuele Gramisci" class="profile-pic" src="DSC_3773.JPG"/></a>
+<h1 class="lang" data-lang="it">Emanuele Gramisci</h1>
+<h1 class="lang" data-lang="en">Emanuele Gramisci</h1>
+<p class="lang" data-lang="it">Concertista e Docente</p>
+<p class="lang" data-lang="en">Concert Guitarist and Educator</p>
+</header>
+<main>
+<section id="chi-sono">
+<h2 class="lang" data-lang="it">Chi sono</h2>
+<h2 class="lang" data-lang="en">About Me</h2>
+<p class="bio lang" data-lang="it">
+        Concertista e Insegnante di Chitarra Classica, Musica da Camera, Teoria e Percezione Musicale. 
+        Con passione e dedizione, accompagno studenti di ogni età nello sviluppo della sensibilità musicale e nella tecnica strumentale, valorizzando l’ascolto e l’espressività.
+      </p>
+<p class="bio lang" data-lang="en">
+        Concert guitarist and teacher of Classical Guitar, Chamber Music, Music Theory and Aural Skills. 
+        With passion and dedication, I guide students of all ages in developing musical sensitivity and instrumental technique, nurturing listening skills and expressive performance.
+      </p>
+</section>
+<section id="cv">
+<h2 class="lang" data-lang="it">Curriculum</h2>
+<h2 class="lang" data-lang="en">Curriculum Vitae</h2>
+<div class="cv-wrapper"><a class="contact-button" download="" href="curriculum.pdf.pdf">
+<span class="lang" data-lang="it">📄 Scarica il mio CV 📄</span>
+<span class="lang" data-lang="en">📄 Download my CV 📄</span>
+</a></div>
+</section>
+<section id="eventi">
+<h2 class="lang" data-lang="it">Eventi e Concerti Futuri</h2>
+<h2 class="lang" data-lang="en">Next Events &amp; Concerts</h2>
+<p style="text-align: center;" class="lang" data-lang="it"> Clicca sull'evento per aggiungerlo al tuo calendario! </p>
+<p style="text-align: center;" class="lang" data-lang="en"> Click on the event to add it to your calendar! </p>
+<a class="event-link" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Concerto+solista+a+Mottafollone&amp;dates=20250711T203000/20250711T223000&amp;details=Concerto+di+chitarra+classica&amp;location=Mottafollone" target="_blank"><div class="event lang" data-lang="it"><strong>11 Luglio 2025</strong> – Concerto solista a Mottafollone</div></a>
+<div class="event lang" data-lang="en"><strong>July 11, 2025</strong> – Solo concert in Mottafollone</div>
+</section>
+<section id="contatti">
+<h2 class="lang" data-lang="it">Contatti</h2>
+<h2 class="lang" data-lang="en">Contacts</h2>
+<div class="contact-button-container">
+<button class="contact-button"><i class="fas fa-envelope"></i> <a href="mailto:gramisci.emanuele@gmail.com">Email</a></button>
+<button class="contact-button"><i class="fas fa-phone"></i> <a href="tel:+391234567890">+39 123 456 7890</a></button>
+<button class="contact-button"><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/emanuele.gramisci" target="_blank">Facebook</a></button>
+<button class="contact-button"><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/emanuele_gramisci/" target="_blank">Instagram</a></button>
+<button class="contact-button"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/391234567890" target="_blank">WhatsApp</a></button>
+<button class="contact-button"><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/emanuelegramisci" target="_blank">LinkedIn</a></button>
+<button class="contact-button"><i class="fas fa-shield-alt"></i> <a href="mailto:gramisci.emanuele@gmail.com">PEC</a></button>
+</div>
+</section>
+</main>
+<footer>
+    © 2025 Emanuele Gramisci
+  </footer>
+<script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById("theme-toggle");
+
+    const lightTheme = {
+      '--background': '#ffffff',
+      '--card-bg': '#f1f1f1',
+      '--text-color': '#111',
+      '--accent': '#800020',
+      '--event-bg': '#2a2a2a',
+      '--event-text': '#fff'
+    };
+
+    const darkTheme = {
+      '--background': '#121212',
+      '--card-bg': '#1e1e1e',
+      '--text-color': '#eee',
+      '--accent': '#800020',
+      '--event-bg': '#2a2a2a',
+      '--event-text': '#fff'
+    };
+
+    function applyTheme(theme) {
+      Object.entries(theme).forEach(([key, value]) => {
+        root.style.setProperty(key, value);
+      });
+    }
+
+    function toggleTheme() {
+      const current = localStorage.getItem('theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      applyTheme(next === 'dark' ? darkTheme : lightTheme);
+    }
+
+    themeToggle.addEventListener('click', toggleTheme);
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    applyTheme(savedTheme === 'dark' ? darkTheme : lightTheme);
+
+    function setLanguage(lang) {
+      localStorage.setItem('language', lang);
+      document.querySelectorAll('.lang').forEach(el => {
+        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+      });
+    }
+
+    const savedLang = localStorage.getItem('language') || 'it';
+    setLanguage(savedLang);
+  </script>
+<div class="modal" id="imageModal">
+<span class="close" onclick="closeModal()">×</span>
+<img class="modal-content" id="modalImage"/>
+</div>
+<script>
+function openModal(src) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("modalImage");
+  modal.style.display = "flex";
+  modalImg.src = src;
+}
+
+function closeModal() {
+  document.getElementById("imageModal").style.display = "none";
+}
+</script></body>
+</html>
