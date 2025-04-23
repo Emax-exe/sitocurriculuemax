@@ -281,12 +281,95 @@
       background: #a0002a;
       cursor: pointer;
     }
-    </style>
+    
+
+#lang-menu-container {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#lang-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+#lang-buttons button {
+  padding: 5px 10px;
+  border: 2px solid var(--accent);
+  background: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+#hamburger-menu {
+  position: relative;
+}
+
+#hamburger-toggle {
+  background: var(--card-bg);
+  border: 2px solid var(--accent);
+  color: var(--text-color);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#hamburger-links {
+  display: none;
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  background: var(--card-bg);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 0.5rem 0;
+  list-style: none;
+  z-index: 1001;
+}
+
+#hamburger-links li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+#hamburger-links li a:hover {
+  background: var(--accent);
+  color: white;
+}
+
+#hamburger-menu {
+  position: relative;
+  margin-top: 3rem;
+}
+
+</style>
 </head>
 <body>
+<div id="lang-menu-container">
 <div id="lang-switcher">
 <button class="contact-button" onclick="setLanguage('it')">IT</button>
 <button class="contact-button" onclick="setLanguage('en')">EN</button>
+</div>
+<div id="hamburger-menu">
+<button id="hamburger-toggle">☰</button>
+<ul id="hamburger-links">
+<li><a href="#chi-sono">Chi sono</a></li>
+<li><a href="#cv">Curriculum</a></li>
+<li><a href="#eventi">Eventi</a></li>
+<li><a href="#contatti-diretti">Contatti</a></li>
+<li><a href="#social">Social</a></li>
+</ul>
+</div>
 </div>
 <button class="contact-button" id="theme-toggle">🌓</button>
 <header>
@@ -320,20 +403,20 @@
 <section id="eventi">
 <h2 class="lang" data-lang="it">Eventi e Concerti Futuri</h2>
 <h2 class="lang" data-lang="en">Next Events &amp; Concerts</h2>
-<p style="text-align: center;" class="lang" data-lang="it"> Clicca sull'evento per aggiungerlo al tuo calendario! </p>
-<p style="text-align: center;" class="lang" data-lang="en"> Click on the event to add it to your calendar! </p>
+<p class="lang" data-lang="it" style="text-align: center;"> Clicca sull'evento per aggiungerlo al tuo calendario! </p>
+<p class="lang" data-lang="en" style="text-align: center;"> Click on the event to add it to your calendar! </p>
 <a class="event-link" href="https://calendar.app.google/Sph83FiuuQizAbhY9" target="_blank"><div class="event lang" data-lang="it"><strong>11 Luglio 2025</strong> – Concerto solista a Mottafollone</div></a>
 <div class="event lang" data-lang="en"><strong>July 11, 2025</strong> – Solo concert in Mottafollone</div>
 </section>
 <section id="social">
-  <h2 class="lang" data-lang="it">Social</h2>
-  <h2 class="lang" data-lang="en">Social</h2>
-  <div class="contact-button-container">
-    <button class="contact-button"><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/emanuele.gramisci" target="_blank">Facebook</a></button>
-    <button class="contact-button"><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/emanuele_gramisci/" target="_blank">Instagram</a></button>
-    <button class="contact-button"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/393534767603" target="_blank">WhatsApp</a></button>
-    <button class="contact-button"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/emanuele-gramisci-311628206/" target="_blank">LinkedIn</a></button>
-  </div>
+<h2 class="lang" data-lang="it">Social</h2>
+<h2 class="lang" data-lang="en">Social</h2>
+<div class="contact-button-container">
+<button class="contact-button"><i class="fab fa-facebook"></i> <a href="https://www.facebook.com/emanuele.gramisci" target="_blank">Facebook</a></button>
+<button class="contact-button"><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/emanuele_gramisci/" target="_blank">Instagram</a></button>
+<button class="contact-button"><i class="fab fa-whatsapp"></i> <a href="https://wa.me/393534767603" target="_blank">WhatsApp</a></button>
+<button class="contact-button"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/emanuele-gramisci-311628206/" target="_blank">LinkedIn</a></button>
+</div>
 </section>
 <section id="contatti">
 <h2 class="lang" data-lang="it">Contatti</h2>
@@ -412,5 +495,9 @@ function openModal(src) {
 function closeModal() {
   document.getElementById("imageModal").style.display = "none";
 }
+</script><script>
+document.getElementById("hamburger-toggle").addEventListener("click", function () {
+  document.getElementById("hamburger-menu").classList.toggle("show");
+});
 </script></body>
 </html>
