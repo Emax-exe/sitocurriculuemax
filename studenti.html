@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Area Studenti - Materiale Didattico</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      padding: 2rem;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    input[type="password"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #800020;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #a0002a;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin: 1rem 0;
+    }
+    a {
+      color: #800020;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Area Riservata Studenti</h1>
+  <div id="login">
+    <p>Inserisci la password per accedere al materiale didattico:</p>
+    <input type="password" id="password" placeholder="Password">
+    <br>
+    <button onclick="checkPassword()">Accedi</button>
+    <p id="error" class="hidden" style="color: red;">Password errata.</p>
+  </div>
+
+  <div id="content" class="hidden">
+    <h2>Materiale Didattico</h2>
+    <ul>
+      <li><a href="" target="_blank"> Lezione 1 </a></li>
+      <li><a href="Parte 2.pdf" target="_blank">Lezione 2 - Valori, Pause, Segni di prolungazione del Suono</a></li>
+      <li><a href="" target="_blank"> Lezione 3</a></li>
+      <li><a href="" target="_blank"> Lezione 4</a></li>
+    </ul>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      const error = document.getElementById('error');
+      if (input === 'lezioniditeoria2025') {
+        document.getElementById('login').classList.add('hidden');
+        document.getElementById('content').classList.remove('hidden');
+      } else {
+        error.classList.remove('hidden');
+      }
+    }
+  </script>
+</body>
+</html>
