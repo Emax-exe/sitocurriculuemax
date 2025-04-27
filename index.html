@@ -358,11 +358,14 @@
   padding: 0.5rem 1rem;
   text-decoration: none;
   color: var(--text-color);
+  border-left: 4px solid transparent; /* bordo trasparente di default */
+  transition: all 0.3s ease;
 }
 
 #hamburger-links li a:hover {
-  background: var(--accent);
-  color: white;
+  border-left: 4px solid var(--accent); /* bordo bordeaux al passaggio */
+  background: none; /* niente sfondo pieno */
+  color: var(--accent); /* testo bordeaux */
 }
 
 #hamburger-menu {
