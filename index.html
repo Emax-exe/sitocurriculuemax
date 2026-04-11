@@ -7,29 +7,67 @@
 <title>Emanuele Gramisci — Chitarrista Classico e Docente</title>
 <meta name="description" content="Emanuele Gramisci, Concertista e Docente di Chitarra Classica, Musica da Camera, Teoria e Percezione Musicale. Concerti, lezioni e materiale didattico." />
 <meta name="author" content="Emanuele Gramisci" />
+
+<!-- Open Graph -->
 <meta property="og:title" content="Emanuele Gramisci — Chitarrista Classico e Docente" />
 <meta property="og:description" content="Concertista e Insegnante di Chitarra Classica. Concerti, lezioni e materiale didattico." />
 <meta property="og:image" content="https://gramisciemanuele.it/DSC_3773.JPG" />
 <meta property="og:url" content="https://gramisciemanuele.it" />
 <meta property="og:type" content="website" />
-<!--ridireziona dominio da www a dominio root-->
-<script>
-  if (window.location.hostname === "www.gramisciemanuele.it") {
-    window.location.replace("https://gramisciemanuele.it" + window.location.pathname);
+
+<!-- Canonical -->
+<link rel="canonical" href="https://gramisciemanuele.it/" />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+<!-- Schema.org Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Emanuele Gramisci",
+  "jobTitle": "Chitarrista Classico e Docente",
+  "description": "Concertista e Insegnante di Chitarra Classica, Musica da Camera, Teoria e Percezione Musicale.",
+  "url": "https://gramisciemanuele.it",
+  "email": "emanuele.gramisci.guitarist@gmail.com",
+  "telephone": "+393534767603",
+  "image": "https://gramisciemanuele.it/DSC_3773.JPG",
+  "sameAs": [
+    "https://www.facebook.com/emanuele.gramisci",
+    "https://www.instagram.com/emanuele_gramisci/",
+    "https://www.linkedin.com/in/emanuele-gramisci-311628206/"
+  ],
+  "knowsAbout": ["Classical Guitar", "Chamber Music", "Music Theory", "Aural Skills"],
+  "performerIn": {
+    "@type": "Event",
+    "name": "Concerto solista a Mottafollone",
+    "startDate": "2026-07-06T18:00:00+02:00",
+    "url": "https://www.amaeventi.org/evento/emanuele-gramisci-mf26/",
+    "location": {
+      "@type": "Place",
+      "name": "Mottafollone"
+    }
   }
+}
 </script>
+
+<!-- Preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 <link rel="stylesheet" href="stile.css" />
 </head>
 <body>
 <div id="lang-menu-container">
 <div id="lang-switcher">
-<button class="contact-button" onclick="setLanguage('it')">IT</button>
-<button class="contact-button" onclick="setLanguage('en')">EN</button>
+<button class="contact-button" onclick="setLanguage('it')" id="btn-lang-it">IT</button>
+<button class="contact-button" onclick="setLanguage('en')" id="btn-lang-en">EN</button>
 </div>
 <div id="hamburger-menu">
-<button id="hamburger-toggle">☰</button>
-<ul id="hamburger-links">
+<button id="hamburger-toggle" aria-label="Apri menu di navigazione" aria-expanded="false">☰</button>
+<ul id="hamburger-links" role="navigation" aria-label="Menu principale">
 <li><a href="#chi-sono">Chi sono</a></li>
 <li><a href="#cv">Curriculum</a></li>
 <li><a href="#eventi">Eventi</a></li>
@@ -39,27 +77,27 @@
 </ul>
 </div>
 </div>
-<button class="contact-button" id="theme-toggle">🌓</button>
+<button class="contact-button" id="theme-toggle" aria-label="Cambia tema chiaro/scuro">🌓</button>
 <header>
-<a href="#" onclick="openModal('DSC_3773.JPG'); return false;"><img alt="Foto di Emanuele Gramisci" class="profile-pic" src="DSC_3773.JPG"/></a>
+<a href="#" onclick="openModal('DSC_3773.JPG'); return false;"><img alt="Foto di Emanuele Gramisci" class="profile-pic" src="DSC_3773.JPG" width="150" height="150"/></a>
 <h1>Emanuele Gramisci</h1>
 <p class="lang" data-lang="it">Concertista e Docente</p>
 <p class="lang" data-lang="en">Concert Guitarist and Educator</p>
 </header>
 <main>
-<section id="chi-sono">
+<section id="chi-sono" class="fade-in">
 <h2 class="lang" data-lang="it">Chi sono</h2>
 <h2 class="lang" data-lang="en">About Me</h2>
 <p class="bio lang" data-lang="it">
         Concertista e Insegnante di Chitarra Classica, Musica da Camera, Teoria e Percezione Musicale. 
-        Con passione e dedizione, accompagno studenti di ogni età nello sviluppo della sensibilità musicale e nella tecnica strumentale, valorizzando l’ascolto e l’espressività.
+        Con passione e dedizione, accompagno studenti di ogni età nello sviluppo della sensibilità musicale e nella tecnica strumentale, valorizzando l'ascolto e l'espressività.
       </p>
 <p class="bio lang" data-lang="en">
         Concert guitarist and teacher of Classical Guitar, Chamber Music, Music Theory and Aural Skills. 
         With passion and dedication, I guide students of all ages in developing musical sensitivity and instrumental technique, nurturing listening skills and expressive performance.
       </p>
 </section>
-<section id="cv">
+<section id="cv" class="fade-in">
 <h2 class="lang" data-lang="it">Curriculum</h2>
 <h2 class="lang" data-lang="en">Curriculum Vitae</h2>
 <div class="cv-wrapper"><a class="contact-button" download="" href="CV Emanuele Gramisci.pdf">
@@ -67,27 +105,27 @@
 <span class="lang" data-lang="en">📄 Download my CV 📄</span>
 </a></div>
 </section>
-<section id="eventi">
+<section id="eventi" class="fade-in">
 <h2 class="lang" data-lang="it">Eventi e Concerti Futuri</h2>
 <h2 class="lang" data-lang="en">Next Events &amp; Concerts</h2>
 <p class="lang" data-lang="it" style="text-align: center;">Clicca sull'evento per tutte le informazioni! </p>
 <p class="lang" data-lang="en" style="text-align: center;">Click on the event for more information!</p>
-<a class="event-link" href="https://www.amaeventi.org/evento/emanuele-gramisci-mf26/" target="_blank" rel="noopener">
+<a class="event-link" href="https://www.amaeventi.org/evento/emanuele-gramisci-mf26/" target="_blank" rel="noopener noreferrer">
 <div class="event lang" data-lang="it"><strong>6 Luglio 2026 — ore 18:00</strong> – Concerto solista a Mottafollone</div>
 <div class="event lang" data-lang="en"><strong>July 6, 2026 — 6:00 PM</strong> – Solo concert in Mottafollone</div>
 </a>
 </section>
-<section id="social">
+<section id="social" class="fade-in">
 <h2 class="lang" data-lang="it">Social</h2>
 <h2 class="lang" data-lang="en">Social</h2>
 <div class="contact-button-container">
-<a class="contact-button" href="https://www.facebook.com/emanuele.gramisci" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-<a class="contact-button" href="https://www.instagram.com/emanuele_gramisci/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-<a class="contact-button" href="https://wa.me/393534767603" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a class="contact-button" href="https://www.linkedin.com/in/emanuele-gramisci-311628206/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+<a class="contact-button" href="https://www.facebook.com/emanuele.gramisci" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i> Facebook</a>
+<a class="contact-button" href="https://www.instagram.com/emanuele_gramisci/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+<a class="contact-button" href="https://wa.me/393534767603" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a class="contact-button" href="https://www.linkedin.com/in/emanuele-gramisci-311628206/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
 </div>
 </section>
-<section id="contatti">
+<section id="contatti" class="fade-in">
 <h2 class="lang" data-lang="it">Contatti</h2>
 <h2 class="lang" data-lang="en">Contacts</h2>
 <div class="contact-button-container">
@@ -100,7 +138,13 @@
 <footer>
     © 2026 Emanuele Gramisci | <a href="cookie-policy.html">Cookie Policy</a>
   </footer>
+
+<!-- ======================== -->
+<!-- Scripts                  -->
+<!-- ======================== -->
+
 <script>
+    /* --- Theme management --- */
     const root = document.documentElement;
     const themeToggle = document.getElementById("theme-toggle");
 
@@ -139,19 +183,42 @@
     const savedTheme = localStorage.getItem('theme') || 'light';
     applyTheme(savedTheme === 'dark' ? darkTheme : lightTheme);
 
+    /* --- Language management --- */
     function setLanguage(lang) {
       localStorage.setItem('language', lang);
       document.querySelectorAll('.lang').forEach(el => {
-        el.style.display = el.dataset.lang === lang ? 'block' : 'none';
+        el.style.display = el.dataset.lang === lang ? '' : 'none';
       });
+      // Highlight active language button
+      document.getElementById('btn-lang-it').classList.toggle('active-lang', lang === 'it');
+      document.getElementById('btn-lang-en').classList.toggle('active-lang', lang === 'en');
     }
 
     const savedLang = localStorage.getItem('language') || 'it';
     setLanguage(savedLang);
-  </script>
+
+    /* --- Fade-in animation with IntersectionObserver --- */
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      fadeObserver.observe(el);
+    });
+</script>
+
+<!-- Image modal -->
 <div class="modal" id="imageModal">
-<span class="close" onclick="closeModal()">×</span>
-<img class="modal-content" id="modalImage"/>
+<span class="close" onclick="closeModal()" aria-label="Chiudi immagine">×</span>
+<img class="modal-content" id="modalImage" alt="Foto ingrandita"/>
 </div>
 <script>
 function openModal(src) {
@@ -159,21 +226,50 @@ function openModal(src) {
   const modalImg = document.getElementById("modalImage");
   modal.style.display = "flex";
   modalImg.src = src;
+  // Close on Escape key
+  document.addEventListener('keydown', handleModalKey);
 }
 
 function closeModal() {
   document.getElementById("imageModal").style.display = "none";
+  document.removeEventListener('keydown', handleModalKey);
 }
-</script><script>
-document.getElementById("hamburger-toggle").addEventListener("click", function (e) {
-  e.stopPropagation();
-  document.getElementById("hamburger-menu").classList.toggle("show");
+
+function handleModalKey(e) {
+  if (e.key === 'Escape') closeModal();
+}
+
+// Close modal on background click
+document.getElementById("imageModal").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
 });
+</script>
+
+<!-- Hamburger menu -->
+<script>
+const hamburgerToggle = document.getElementById("hamburger-toggle");
+const hamburgerMenu = document.getElementById("hamburger-menu");
+
+hamburgerToggle.addEventListener("click", function (e) {
+  e.stopPropagation();
+  const isOpen = hamburgerMenu.classList.toggle("show");
+  hamburgerToggle.setAttribute("aria-expanded", isOpen);
+});
+
 document.addEventListener("click", function (e) {
-  const menu = document.getElementById("hamburger-menu");
-  if (!menu.contains(e.target)) {
-    menu.classList.remove("show");
+  if (!hamburgerMenu.contains(e.target)) {
+    hamburgerMenu.classList.remove("show");
+    hamburgerToggle.setAttribute("aria-expanded", "false");
   }
 });
-</script></body>
+
+// Close menu when clicking a link
+document.querySelectorAll("#hamburger-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    hamburgerMenu.classList.remove("show");
+    hamburgerToggle.setAttribute("aria-expanded", "false");
+  });
+});
+</script>
+</body>
 </html>
