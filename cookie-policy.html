@@ -2,22 +2,178 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Cookie Policy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Policy — Emanuele Gramisci</title>
+  <link rel="stylesheet" href="stile.css" />
   <style>
-    body { font-family: sans-serif; padding: 2rem; line-height: 1.6; background: #fff; color: #111; max-width: 800px; margin: auto; }
-    h1 { color: #800020; }
-    a { color: #800020; font-weight: bold; }
+    .policy-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem 4rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 1.5rem;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.75; }
+    .policy-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.15);
+    }
+    .policy-section h2 {
+      color: var(--accent);
+      text-align: left;
+      margin-top: 0;
+    }
+    .policy-section p, .policy-section li {
+      line-height: 1.7;
+    }
+    .policy-section ul {
+      padding-left: 1.2rem;
+    }
+    .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .update-date {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
   </style>
 </head>
 <body>
-  <h1>Cookie Policy</h1>
-  <p>Questo sito utilizza esclusivamente cookie tecnici, necessari al corretto funzionamento del sito stesso.</p>
-  <p>Non vengono utilizzati cookie di profilazione né cookie di terze parti.</p>
-  <h2>Cosa sono i cookie</h2>
-  <p>I cookie sono piccoli file di testo che i siti web salvano sul tuo dispositivo mentre li visiti. Servono per garantire la funzionalità del sito o migliorarne l’usabilità.</p>
-  <h2>Gestione dei cookie</h2>
-  <p>Puoi disattivare i cookie direttamente dal tuo browser. Tuttavia, disabilitando i cookie tecnici, alcune funzionalità del sito potrebbero non funzionare correttamente.</p>
-  <h2>Contatti</h2>
-  <p>Per qualsiasi informazione puoi scrivere a: <a href="mailto:emanuele.gramisci.guitarist@gmail.com">emanuele.gramisci.guitarist@gmail.com</a></p>
+  <div class="policy-container">
+
+    <a class="back-link" href="index.html">← Torna alla home</a>
+
+    <h1 style="color: var(--accent);">Cookie Policy</h1>
+    <p class="update-date">Ultimo aggiornamento: aprile 2026</p>
+
+    <div class="policy-section">
+      <h2>1. Titolare del Trattamento</h2>
+      <p>
+        <strong>Emanuele Gramisci</strong><br>
+        Email: <a href="mailto:emanuele.gramisci.guitarist@gmail.com" style="color:var(--accent);">emanuele.gramisci.guitarist@gmail.com</a><br>
+        PEC: <a href="mailto:emanuele.gramisci@widipec.it" style="color:var(--accent);">emanuele.gramisci@widipec.it</a>
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>2. Cosa sono i cookie e tecnologie simili</h2>
+      <p>
+        I cookie sono piccoli file di testo salvati sul dispositivo dell'utente durante la navigazione su un sito web.
+        Le presenti Linee Guida si applicano anche a <strong>tecnologie analoghe</strong> come <code>localStorage</code>
+        e <code>sessionStorage</code>, in conformità con le Linee Guida del Garante per la protezione dei dati personali
+        del 10 giugno 2021 (doc. n. 9677876).
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>3. Tipologie di cookie utilizzati <span class="badge">Solo tecnici</span></h2>
+      <p>
+        Questo sito utilizza <strong>esclusivamente strumenti tecnici e funzionali</strong>,
+        necessari al corretto funzionamento e all'erogazione del servizio:
+      </p>
+      <ul>
+        <li>
+          <strong>Preferenza lingua</strong> (localStorage) — memorizza la lingua selezionata dall'utente (italiano o inglese)
+          tra una visita e l'altra, evitando di dover reimpostare la preferenza ad ogni accesso.
+        </li>
+        <li>
+          <strong>Preferenza tema</strong> (localStorage) — memorizza la scelta dell'utente tra tema chiaro e tema scuro.
+        </li>
+      </ul>
+      <p>
+        Questi dati sono salvati <strong>esclusivamente nel browser dell'utente</strong> e non vengono
+        trasmessi al server né condivisi con terze parti.
+      </p>
+      <p>
+        <strong>Non vengono utilizzati</strong> cookie di profilazione, cookie di marketing,
+        cookie analitici di terze parti né sistemi di tracciamento comportamentale.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>4. Risorse esterne (terze parti)</h2>
+      <p>
+        Il sito carica le icone Font Awesome tramite il CDN di <strong>Cloudflare</strong>
+        (<code>cdnjs.cloudflare.com</code>). Questo servizio tecnico potrebbe registrare
+        l'indirizzo IP dell'utente a fini di sicurezza e ottimizzazione della rete.
+        Per informazioni sulla privacy di Cloudflare:
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener" style="color:var(--accent);">
+          cloudflare.com/privacypolicy
+        </a>.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>5. Perché non è presente il banner dei cookie</h2>
+      <p>
+        Poiché questo sito utilizza <strong>esclusivamente strumenti tecnici</strong>,
+        non è richiesto il consenso preventivo dell'utente per il loro utilizzo,
+        né è obbligatoria la presentazione di un banner di consenso ai cookie.
+        Ciò è conforme alle Linee Guida del Garante Privacy del 10 giugno 2021.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>6. Come gestire o eliminare i dati</h2>
+      <p>
+        Puoi eliminare in qualsiasi momento i dati salvati in <code>localStorage</code>
+        tramite le impostazioni del tuo browser:
+      </p>
+      <ul>
+        <li><strong>Chrome/Edge:</strong> F12 → Application → Local Storage → tasto destro → Clear</li>
+        <li><strong>Firefox:</strong> F12 → Storage → Local Storage → tasto destro → Remove All</li>
+        <li><strong>Safari:</strong> Preferenze → Privacy → Gestisci dati sito web</li>
+      </ul>
+      <p>
+        La cancellazione dei dati comporta solo il ripristino della lingua e del tema alle impostazioni predefinite.
+        Non vengono persi altri dati.
+      </p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7. Diritti dell'interessato</h2>
+      <p>Ai sensi degli artt. 15–22 del Regolamento UE 2016/679 (GDPR), hai diritto di:</p>
+      <ul>
+        <li>Accedere ai tuoi dati personali trattati dal Titolare</li>
+        <li>Richiederne la rettifica o la cancellazione</li>
+        <li>Opporti al trattamento o richiederne la limitazione</li>
+        <li>Richiedere la portabilità dei dati</li>
+        <li>Proporre reclamo al <strong>Garante per la Protezione dei Dati Personali</strong>
+          (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener" style="color:var(--accent);">garanteprivacy.it</a>)
+        </li>
+      </ul>
+      <p>
+        Per esercitare i tuoi diritti, scrivi a:
+        <a href="mailto:emanuele.gramisci.guitarist@gmail.com" style="color:var(--accent);">
+          emanuele.gramisci.guitarist@gmail.com
+        </a>
+      </p>
+    </div>
+
+    <footer style="text-align:center; color:#aaa; font-size:0.85rem; margin-top:2rem;">
+      © 2026 Emanuele Gramisci
+    </footer>
+
+  </div>
 </body>
 </html>

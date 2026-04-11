@@ -3,84 +3,209 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Area Studenti - Materiale Didattico</title>
+  <title>Area Studenti — Emanuele Gramisci</title>
+  <meta name="description" content="Area riservata agli studenti di Emanuele Gramisci. Accedi a Google Classroom per dispense, esercizi e materiale didattico.">
+  <!-- robots: impedisce ai motori di ricerca di indicizzare questa pagina -->
+  <meta name="robots" content="noindex, nofollow">
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="stile.css" />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f7f7f7;
-      color: #333;
-      padding: 2rem;
+    .students-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.75; }
+
+    .hero-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
       text-align: center;
+      margin-bottom: 1.5rem;
     }
-    .hidden {
-      display: none;
-    }
-    input[type="password"] {
-      padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
+    .hero-icon {
+      font-size: 3.5rem;
       margin-bottom: 1rem;
     }
-    button {
-      padding: 0.5rem 1rem;
-      font-size: 1rem;
-      background-color: #800020;
+    .hero-card h1 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin: 0 0 0.5rem;
+    }
+    .hero-card p {
+      color: var(--text-color);
+      opacity: 0.8;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    /* =====================================================
+       ⬇️  SOSTITUISCI con il link della tua classe Google
+       Esempio: https://classroom.google.com/c/XXXXXXXXXX
+       ===================================================== */
+    .classroom-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #1a73e8;
       color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #a0002a;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin: 1rem 0;
-    }
-    a {
-      color: #800020;
-      text-decoration: none;
+      font-size: 1.1rem;
       font-weight: bold;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(26,115,232,0.4);
+      transition: all 0.25s ease;
     }
-    a:hover {
-      text-decoration: underline;
+    .classroom-btn:hover {
+      background: #1557b0;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(26,115,232,0.5);
     }
+    .classroom-btn:active {
+      transform: scale(0.97);
+    }
+    .classroom-btn img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    .info-card h2 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-top: 0;
+    }
+    .steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(128,128,128,0.15);
+      font-size: 0.97rem;
+      line-height: 1.5;
+    }
+    .steps li:last-child { border-bottom: none; }
+    .step-num {
+      background: var(--accent);
+      color: white;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+    .contact-note a {
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .contact-note a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <h1>Area Riservata Studenti</h1>
-  <div id="login">
-    <p>Inserisci la password per accedere al materiale didattico:</p>
-    <input type="password" id="password" placeholder="Password">
-    <br>
-    <button onclick="checkPassword()">Accedi</button>
-    <p id="error" class="hidden" style="color: red;">Password errata.</p>
-  </div>
 
-  <div id="content" class="hidden">
-    <h2>Materiale Didattico</h2>
-    <ul>
-      <li><a href="materiale/Parte 1.pdf" target="_blank"> Lezione 1 - Musica, Suono, Ritmo, Note, Rigo e Chiavi Musicali</a></li>
-      <li><a href="materiale/Parte 2.pdf" target="_blank">Lezione 2 - Valori, Pause, Segni di prolungazione del Suono</a></li>
-      <li><a href="materiale/PARTE INTERVALLI.pdf" target="_blank"> Lezione 3 - Dispensa Intervalli</a></li>
-    </ul>
-  </div>
-
+  <!-- Applica il tema salvato -->
   <script>
-    function checkPassword() {
-      const input = document.getElementById('password').value;
-      const error = document.getElementById('error');
-      if (input === 'lezioniditeoria2025') {
-        document.getElementById('login').classList.add('hidden');
-        document.getElementById('content').classList.remove('hidden');
-      } else {
-        error.classList.remove('hidden');
-      }
-    }
+    const saved = localStorage.getItem('theme') || 'light';
+    const themes = {
+      light: { '--background':'#ffffff','--card-bg':'#f1f1f1','--text-color':'#111','--accent':'#800020','--event-bg':'#2a2a2a','--event-text':'#fff' },
+      dark:  { '--background':'#121212','--card-bg':'#1e1e1e','--text-color':'#eee','--accent':'#800020','--event-bg':'#2a2a2a','--event-text':'#fff' }
+    };
+    Object.entries(themes[saved]).forEach(([k,v]) => document.documentElement.style.setProperty(k,v));
   </script>
+
+  <div class="students-container">
+
+    <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Torna alla home</a>
+
+    <div class="hero-card">
+      <div class="hero-icon">🎓</div>
+      <h1>Area Riservata Studenti</h1>
+      <p>
+        Dispense, esercizi e materiale didattico sono disponibili su <strong>Google Classroom</strong>.<br>
+        Accedi con il tuo account Google per visualizzare tutti i contenuti.
+      </p>
+
+      <!-- ⬇️ SOSTITUISCI L'HREF con il link della tua classe Google Classroom -->
+      <a class="classroom-btn"
+         href="https://classroom.google.com"
+         target="_blank"
+         rel="noopener">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="26" height="26">
+          <path fill="#ffffff" d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4z" opacity=".3"/>
+          <path fill="#ffffff" d="M6 34v2c0 2.2 1.8 4 4 4h28c2.2 0 4-1.8 4-4v-2H6z"/>
+          <path fill="#ffffff" d="M42 34H6V14c0-2.2 1.8-4 4-4h28c2.2 0 4 1.8 4 4v20z" opacity=".3"/>
+          <path fill="#fff" d="M24 22c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM32 32h-2v-1c0-2.8-2.7-5-6-5s-6 2.2-6 5v1h-2v-1c0-3.9 3.6-7 8-7s8 3.1 8 7v1z"/>
+        </svg>
+        Accedi a Google Classroom
+      </a>
+    </div>
+
+    <div class="info-card">
+      <h2><i class="fas fa-info-circle" style="margin-right:6px;"></i>Come accedere per la prima volta</h2>
+      <ol class="steps">
+        <li>
+          <span class="step-num">1</span>
+          <span>Assicurati di avere un <strong>account Google</strong> (Gmail). Se non ce l'hai, crealo gratuitamente su <a href="https://accounts.google.com" target="_blank" rel="noopener" style="color:var(--accent);">accounts.google.com</a>.</span>
+        </li>
+        <li>
+          <span class="step-num">2</span>
+          <span>Clicca il pulsante blu "Accedi a Google Classroom" qui sopra e accedi con il tuo account Google.</span>
+        </li>
+        <li>
+          <span class="step-num">3</span>
+          <span>Se non sei ancora iscritto alla classe, usa il <strong>codice classe</strong> che ti ho inviato via email o WhatsApp.</span>
+        </li>
+        <li>
+          <span class="step-num">4</span>
+          <span>Troverai dispense, esercizi e le comunicazioni del corso sempre aggiornate.</span>
+        </li>
+      </ol>
+    </div>
+
+    <p class="contact-note">
+      Problemi di accesso? Scrivimi su
+      <a href="https://wa.me/393534767603" target="_blank" rel="noopener">WhatsApp</a>
+      o a <a href="mailto:emanuele.gramisci.guitarist@gmail.com">emanuele.gramisci.guitarist@gmail.com</a>
+    </p>
+
+  </div>
+
 </body>
 </html>
