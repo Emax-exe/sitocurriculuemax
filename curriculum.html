@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae — Emanuele Gramisci</title>
+  <meta name="description" content="Curriculum Vitae completo di Emanuele Gramisci: formazione musicale, concerti, docenza, competenze informatiche e progetti.">
+  <meta name="author" content="Emanuele Gramisci">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Curriculum Vitae — Emanuele Gramisci">
+  <meta property="og:description" content="Curriculum professionale: formazione musicale, concerti, docenza e competenze informatiche.">
+  <meta property="og:image" content="https://gramisciemanuele.it/profile-photo.jpg">
+  <meta property="og:url" content="https://gramisciemanuele.it/curriculum.html">
+  <meta property="og:type" content="profile">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://gramisciemanuele.it/curriculum.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="stile.css">
+
+  <style>
+    /* === CV Page — Layout & Components === */
+
+    .cv-page-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: bold;
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.75; }
+
+    /* --- CV Header Card --- */
+    .cv-header-card {
+      background: linear-gradient(135deg, var(--bordeaux-light) 0%, var(--bordeaux-dark) 100%);
+      border-radius: var(--radius-md);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: #fff;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .cv-header-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 30%, rgba(255,255,255,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .cv-header-card h1 {
+      position: relative; z-index: 1;
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+    }
+    .cv-header-card .subtitle {
+      position: relative; z-index: 1;
+      font-size: 1.1rem;
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+    }
+    .cv-header-card .info-row {
+      position: relative; z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+    .cv-header-card .info-row span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* --- CV Download Banner --- */
+    .cv-download-banner {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* --- Section Card --- */
+    .cv-section {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(128, 0, 32, 0.06);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .cv-section:hover {
+      box-shadow: var(--shadow-lg);
+    }
+
+    .cv-section h2 {
+      color: var(--accent);
+      text-align: left;
+      font-size: 1.35rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .cv-section h2 i {
+      font-size: 1.1rem;
+    }
+
+    /* --- Presentation text --- */
+    .presentation-text {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+
+    /* --- Timeline Entry --- */
+    .timeline-entry {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1.75rem;
+      border-left: 3px solid var(--accent);
+    }
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-entry::before {
+      content: '';
+      position: absolute;
+      left: -7px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--card-bg);
+    }
+
+    .timeline-entry .entry-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-color);
+      margin-bottom: 0.15rem;
+      line-height: 1.4;
+    }
+
+    .timeline-entry .entry-org {
+      font-size: 0.92rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.15rem;
+    }
+    .timeline-entry .entry-org a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .timeline-entry .entry-org a:hover {
+      text-decoration: underline;
+    }
+
+    .timeline-entry .entry-date {
+      font-size: 0.85rem;
+      color: var(--text-color);
+      opacity: 0.6;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .timeline-entry .entry-details {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      opacity: 0.85;
+    }
+
+    .timeline-entry .entry-meta {
+      font-size: 0.85rem;
+      color: var(--text-color);
+      opacity: 0.55;
+      margin-top: 0.25rem;
+    }
+
+    .timeline-entry .entry-details ul {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0 0;
+    }
+    .timeline-entry .entry-details li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* --- Skills / Tags --- */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .skill-tag {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-lg);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* --- Awards list --- */
+    .award-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(128,128,128,0.1);
+    }
+    .award-item:last-child { border-bottom: none; }
+    .award-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .award-item .award-content {
+      flex: 1;
+    }
+    .award-item .award-title {
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: var(--text-color);
+    }
+    .award-item .award-place {
+      font-size: 0.85rem;
+      color: var(--text-color);
+      opacity: 0.6;
+    }
+
+    /* --- OS / Technical skills subsections --- */
+    .tech-subsection {
+      margin-bottom: 1.25rem;
+    }
+    .tech-subsection:last-child { margin-bottom: 0; }
+    .tech-subsection h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .tech-subsection ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+    .tech-subsection li {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      opacity: 0.85;
+      margin-bottom: 0.2rem;
+    }
+
+    /* --- Project card --- */
+    .project-card {
+      background: rgba(128, 0, 32, 0.04);
+      border-radius: var(--radius-sm);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      transition: transform var(--transition);
+    }
+    .project-card:hover {
+      transform: translateX(4px);
+    }
+    .project-card:last-child { margin-bottom: 0; }
+    .project-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin: 0 0 0.25rem 0;
+    }
+    .project-card .project-date {
+      font-size: 0.82rem;
+      opacity: 0.55;
+      color: var(--text-color);
+      margin-bottom: 0.5rem;
+    }
+    .project-card p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--text-color);
+      opacity: 0.85;
+      margin: 0 0 0.5rem 0;
+    }
+    .project-card ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+    .project-card li {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      opacity: 0.85;
+      margin-bottom: 0.2rem;
+    }
+    .project-card a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .project-card a:hover { text-decoration: underline; }
+
+    /* --- Responsive --- */
+    @media (max-width: 600px) {
+      .cv-header-card h1 { font-size: 1.5rem; }
+      .cv-header-card .subtitle { font-size: 0.95rem; }
+      .cv-header-card .info-row { font-size: 0.82rem; }
+      .cv-section { padding: 1.5rem 1rem; }
+      .cv-section h2 { font-size: 1.15rem; }
+      .timeline-entry .entry-title { font-size: 0.97rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Applica il tema salvato immediatamente -->
+  <script>
+    const saved = localStorage.getItem('theme') || 'light';
+    const themes = {
+      light: { '--background':'#ffffff','--card-bg':'#f1f1f1','--text-color':'#111','--accent':'#800020','--event-bg':'#2a2a2a','--event-text':'#fff' },
+      dark:  { '--background':'#121212','--card-bg':'#1e1e1e','--text-color':'#eee','--accent':'#800020','--event-bg':'#2a2a2a','--event-text':'#fff' }
+    };
+    Object.entries(themes[saved]).forEach(([k,v]) => document.documentElement.style.setProperty(k,v));
+  </script>
+
+  <div class="cv-page-container">
+
+    <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Torna alla home</a>
+
+    <!-- ======================== -->
+    <!-- Header Card              -->
+    <!-- ======================== -->
+    <div class="cv-header-card">
+      <h1>Emanuele Gramisci</h1>
+      <p class="subtitle">Concertista e Docente di Chitarra Classica</p>
+      <div class="info-row">
+        <span><i class="fas fa-birthday-cake"></i> 08/03/1998</span>
+        <span><i class="fas fa-flag"></i> Italiana</span>
+        <span><i class="fas fa-phone"></i> (+39) 353 476 7603</span>
+        <span><i class="fas fa-envelope"></i> emanuele.gramisci.guitarist@gmail.com</span>
+      </div>
+    </div>
+
+    <!-- Download PDF -->
+    <div class="cv-download-banner">
+      <a class="contact-button" download href="CV Emanuele Gramisci.pdf">
+        <i class="fas fa-file-pdf"></i> Scarica il CV in PDF
+      </a>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Presentazione            -->
+    <!-- ======================== -->
+    <div class="cv-section" id="presentazione">
+      <h2><i class="fas fa-user"></i> Presentazione</h2>
+      <p class="presentation-text">
+        Fin dalla mia formazione iniziale, ho coltivato una profonda passione per l'insegnamento e la condivisione delle conoscenze, affiancandola ad un'altra mia grande passione per l'informatica e la tecnologia. Questi ambiti, combinati, mi hanno permesso di esplorare nuovi approcci educativi e di promuovere l'uso delle tecnologie digitali per arricchire l'esperienza di apprendimento.
+      </p>
+      <p class="presentation-text">
+        Lavorare con studenti di background diversi mi ha insegnato l'importanza di adattare metodi e strumenti didattici alle loro esigenze specifiche. Ad esempio, ho integrato competenze informatiche nella mia pratica educativa, utilizzando strumenti tecnologici per favorire un apprendimento attivo e innovativo. Ho esperienza pratica nell'assemblaggio e nell'aggiornamento hardware, nella gestione di sistemi operativi e nella configurazione di cloud personali, competenze che mi consentono di ispirare gli studenti anche nel campo della tecnologia.
+      </p>
+      <p class="presentation-text">
+        Credo fermamente che ogni studente abbia un potenziale unico e che il ruolo dell'educatore sia quello di creare un ambiente che favorisca la scoperta e lo sviluppo di tali talenti. Attraverso la mia passione per l'informatica, cerco di stimolare nei giovani la curiosità per il pensiero critico e creativo, preparandoli ad affrontare le sfide di un mondo sempre più digitalizzato.
+      </p>
+      <p class="presentation-text">
+        Sono altamente predisposto ad apprendere e a formarmi costantemente in ambito informatico, con una forte passione per l'aggiornamento continuo sulle nuove tecnologie e soluzioni innovative.
+      </p>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Esperienza Lavorativa    -->
+    <!-- ======================== -->
+    <div class="cv-section" id="esperienza">
+      <h2><i class="fas fa-briefcase"></i> Esperienza Lavorativa</h2>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Esibizione da Concertista Solista – I Edizione "Sotto Lo Stesso Cielo"</div>
+        <div class="entry-org">Associazione Culturale Enotria – Villapiana (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 29 Luglio 2025</div>
+        <div class="entry-details">
+          Programma da concerto:
+          <ul>
+            <li>Bartolomé Calatayud – Boceto Andaluz</li>
+            <li>Isaac Albéniz – Asturias (Leyenda)</li>
+            <li>Gaspar Sanz – Canarios</li>
+            <li>Ennio Morricone – Love Theme, trascrizione per chitarra</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concertista Solista (Chitarra Classica)</div>
+        <div class="entry-org"><a href="https://www.amaeventi.org/evento/emanuele-gramisci-mf26/" target="_blank" rel="noopener">AMA Calabria – Ionio International Music Festival 2025</a> – Mottafollone</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 11 Luglio 2025</div>
+        <div class="entry-details">
+          Programma da concerto in due parti:
+          <ul>
+            <li><strong>Prima parte — Dal Barocco al Romanticismo:</strong> G. Sanz – Canarios; M. Giuliani – Gran Sonata Eroica, Op. 150; J. K. Mertz – Le Gondolier, Op. 65 n. 1 &amp; Elegie</li>
+            <li><strong>Seconda parte — Dall'Impressionismo alla Musica Contemporanea:</strong> I. Albéniz – Asturias; H. Villa-Lobos – Preludio n. 1 &amp; Etude n. 11; M. Castelnuovo-Tedesco – Capriccio Diabolico, Op. 85; R. Dyens – Tango en Skaï</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concerto di Primavera (Chitarra Classica e Pianoforte)</div>
+        <div class="entry-org">Cuore Solidale – Associazione di volontariato – Castrovillari</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 5 Aprile 2025</div>
+        <div class="entry-details">
+          Concerto a scopo benefico con musiche per chitarra classica e pianoforte, a cura di Emanuele Gramisci e Pietro Odoguardi.
+          <ul>
+            <li>B. Calatayud – Boceto Andaluz</li>
+            <li>I. Albéniz – Asturias (Leyenda)</li>
+            <li>W. A. Mozart – Marcia Turca (versione blues/jazz, pianoforte)</li>
+            <li>Anonimo (arr. N. Yepes) – Giochi Proibiti</li>
+            <li>F. Tárrega – Capricho Árabe</li>
+            <li>G. Sanz – Canarios</li>
+            <li>G. Puccini – Nessun Dorma (pianoforte)</li>
+            <li>E. Morricone – Love Theme (chitarra e pianoforte)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Intermezzo e sottofondo musicale – Rassegna "Librincantine"</div>
+        <div class="entry-org">Tenute Pacelli – Malvito (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 5 Agosto 2024</div>
+        <div class="entry-details">
+          Ho eseguito numerosi intermezzi e sottofondi musicali durante la rassegna culturale dedicata ai libri e ai vini. Ho accompagnato le letture di importanti scrittori ed editori quali: Santo Gioffrè, Ettore Bruno, Doris Bellomusto, Eliana Godino, Domenico Dara, Antonella Perrotta.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Intermezzo musicale – Presentazione del libro "IL POLACCO"</div>
+        <div class="entry-org">VINTURA edizioni – Trebisacce (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 30 Giugno 2024</div>
+        <div class="entry-details">
+          Intermezzi musicali con numerosi brevi brani contemporanei durante la presentazione del libro "IL POLACCO" di Claire Clairmont &amp; Mary Shelly.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Docente di Chitarra Classica, Teoria, Percezione Musicale e Ritmica</div>
+        <div class="entry-org">Accademia Musicale Gustav Mahler – Trebisacce (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Ottobre 2021 – Giugno 2024</div>
+        <div class="entry-details">
+          Docente Part-Time di chitarra classica e di teoria, percezione musicale e ritmica.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Membro della Giuria – VII Concorso Musicale Internazionale "G. Mahler"</div>
+        <div class="entry-org">Accademia Musicale Gustav Mahler – Trebisacce (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 6–12 Maggio 2024</div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Docente del Percorso di Mentoring e Orientamento (Progetto Musicale PNRR)</div>
+        <div class="entry-org">I.P.S.I.A. "E. Aletti" – Trebisacce (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Gennaio 2024 – Aprile 2024</div>
+        <div class="entry-details">
+          Intervento finalizzato alla riduzione dei divari territoriali nella scuola secondaria e alla lotta alla dispersione scolastica. Direzione di un corso di musica con insegnamento delle principali nozioni musicali e ritmiche.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concertista Solista – Inaugurazione Anno Accademico 2023-2024</div>
+        <div class="entry-org">Accademia Musicale Gustav Mahler – Trebisacce (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 21 Gennaio 2024</div>
+        <div class="entry-details">
+          Intermezzo musicale durante l'inaugurazione del nuovo Anno Accademico e della convenzione con il Conservatorio P. I. Tchaikovsky di Nocera Terinese (CZ).<br>
+          Brano eseguito: <em>Elegie</em> di Johann Kaspar Mertz.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concertista Solista (Chitarra Classica)</div>
+        <div class="entry-org"><a href="https://www.amaeventi.org/evento/emanuele-gramisci-iimf23/" target="_blank" rel="noopener">AMA Calabria – Ionio International Music Festival 2023</a> – Trebisacce</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 2 Ottobre 2023</div>
+        <div class="entry-details">
+          Programma da concerto:
+          <ul>
+            <li>J. Dowland – The Frog Galliard</li>
+            <li>J. S. Bach – Preludio, Fuga e Allegro BWV 998</li>
+            <li>G. Sanz – Canarios</li>
+            <li>F. Tárrega – Capricho Árabe &amp; Gran Vals</li>
+            <li>I. Albéniz – Torre Bermeja</li>
+            <li>A. Barrios – La Catedral</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concertista Solista – Intermezzo musicale televisivo</div>
+        <div class="entry-org"><a href="https://www.lactv.it/" target="_blank" rel="noopener">LaC TV</a> – Villapiana</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 23 Giugno 2023</div>
+        <div class="entry-details">
+          Intervista ed esecuzione di un intermezzo musicale durante la rubrica televisiva "Terra Mia" (canale 11 Calabria, Tivùsat 411, Sky 820).<br>
+          Brani eseguiti: <em>Un Dia De Noviembre</em> di L. Brouwer; <em>Suite del Plata n°1</em> di M. D. Pujol.
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Concertista Solista (Chitarra Classica)</div>
+        <div class="entry-org"><a href="https://www.amaeventi.org/evento/emanuele-gramisci/" target="_blank" rel="noopener">AMA Calabria – Ionio International Music Festival 2022</a> – Trebisacce</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 18 Settembre 2022</div>
+        <div class="entry-details">
+          Programma da concerto:
+          <ul>
+            <li>H. Villa-Lobos – Studi n. 6 e 11</li>
+            <li>L. Legnani – Capricci n. 9 e 7</li>
+            <li>M. Giuliani – La Risoluzione (Le Giulianate)</li>
+            <li>A. Barrios – La Catedral</li>
+            <li>I. Albéniz – Asturias</li>
+            <li>F. Tárrega – Capriccio Arabo</li>
+            <li>R. Dyens – Tango en Skaï</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Istruzione e Formazione  -->
+    <!-- ======================== -->
+    <div class="cv-section" id="istruzione">
+      <h2><i class="fas fa-graduation-cap"></i> Istruzione e Formazione</h2>
+
+      <div class="timeline-entry">
+        <div class="entry-title">EDSC DIGCOMP 2.2 USER – Livello Altamente Specializzato 8</div>
+        <div class="entry-org">Intertek Italia Spa</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 31 Marzo 2025</div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Certificazione IDCERT DigCompEdu – Livello Pioniere C2</div>
+        <div class="entry-org">IDCERT srl Società Benefit</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> 27 Febbraio 2025</div>
+        <div class="entry-meta">Campo di studio: Tecnologie dell'informazione e della comunicazione (TIC)</div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Abilitazione all'insegnamento (60 CFU) – Classe AB56 (Chitarra)</div>
+        <div class="entry-org"><a href="https://www.cons.cz.it/" target="_blank" rel="noopener">Conservatorio statale P. I. Tchaikovsky – Nocera Terinese (CZ)</a></div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Maggio 2025 – Novembre 2025</div>
+        <div class="entry-details">
+          Percorso di formazione iniziale (DPCM 4 agosto 2023).<br>
+          Voto finale: <strong>10/10</strong><br>
+          Tesi: <em>Intervento Trasversale Sul Perfezionamento Tecnico-Espressivo</em>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Laurea di II Livello in Discipline Musicali – Musica Da Camera</div>
+        <div class="entry-org"><a href="https://www.cons.cz.it/" target="_blank" rel="noopener">Conservatorio statale P. I. Tchaikovsky – Nocera Terinese (CZ)</a></div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Settembre 2023 – Ottobre 2025</div>
+        <div class="entry-details">
+          Diploma Accademico di II Livello (biennio AFAM).<br>
+          Voto finale: <strong>110/110</strong><br>
+          Tesi: <em>Lo sviluppo della musica da camera per chitarra e pianoforte in Europa: dalle origini al XXI secolo</em>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Laurea di II Livello in Discipline Musicali – Chitarra Classica</div>
+        <div class="entry-org"><a href="https://www.cons.cz.it/" target="_blank" rel="noopener">Conservatorio statale P. I. Tchaikovsky – Nocera Terinese (CZ)</a></div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Novembre 2021 – Ottobre 2023</div>
+        <div class="entry-details">
+          Diploma Accademico di II Livello (biennio AFAM) – 120 CFA.<br>
+          Voto finale: <strong>110/110</strong><br>
+          Tesi: <em>Promuovere l'Inclusione Attraverso l'Educazione Musicale e le Attività Didattiche per Studenti con DSA</em>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">24 CFA</div>
+        <div class="entry-org"><a href="https://www.cons.cz.it/" target="_blank" rel="noopener">Conservatorio statale P. I. Tchaikovsky – Nocera Terinese (CZ)</a></div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Dicembre 2021 – Luglio 2022</div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Laurea di I Livello in Discipline Musicali – Chitarra Classica</div>
+        <div class="entry-org"><a href="https://www.cons.cz.it/" target="_blank" rel="noopener">Conservatorio statale P. I. Tchaikovsky – Nocera Terinese (CZ)</a></div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Ottobre 2018 – Ottobre 2021</div>
+        <div class="entry-details">
+          Diploma Accademico di I Livello (triennio AFAM) – 180 CFA.<br>
+          Voto finale: <strong>103/110</strong><br>
+          Tesi: <em>Gli effetti della musicoterapia negli anziani affetti da Demenza e nei Bambini Autistici</em>
+        </div>
+      </div>
+
+      <div class="timeline-entry">
+        <div class="entry-title">Corso di Laurea in Ingegneria Informatica</div>
+        <div class="entry-org"><a href="https://dimes.unical.it/" target="_blank" rel="noopener">Unical – Dipartimento DIMES</a> – Arcavacata (CS)</div>
+        <div class="entry-date"><i class="far fa-calendar-alt"></i> Settembre 2017 – Giugno 2018</div>
+        <div class="entry-details">
+          Materie rilevanti seguite: Fondamenti di Informatica (Python), Algebra Lineare, Analisi 1.
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Premi e Concorsi         -->
+    <!-- ======================== -->
+    <div class="cv-section" id="premi">
+      <h2><i class="fas fa-trophy"></i> Premi e Concorsi</h2>
+
+      <div class="award-item">
+        <span class="award-icon">🥈</span>
+        <div class="award-content">
+          <div class="award-title">2° Posto – Naxos Winter Camp, Concorso Internazionale "A. Longo"</div>
+          <div class="award-place">Accademia Pianistica Italiana – Giardini Naxos (ME) | 8 Gennaio 2014</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <span class="award-icon">🥇</span>
+        <div class="award-content">
+          <div class="award-title">1° Posto – VI Concorso Nazionale Musicale "Le Note in Chiave"</div>
+          <div class="award-place">Hello Music by Roland School – Acri (CS) | 29–31 Maggio 2012</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <span class="award-icon">🥇</span>
+        <div class="award-content">
+          <div class="award-title">1° Posto Assoluto – II Concorso Musicale Nazionale Gustav Mahler</div>
+          <div class="award-place">Accademia Musicale Gustav Mahler – Trebisacce (CS) | 11–13 Maggio 2012</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <span class="award-icon">🥉</span>
+        <div class="award-content">
+          <div class="award-title">3° Posto – I Concorso Musicale Nazionale "Musicabilandia"</div>
+          <div class="award-place">Istituto Comprensivo B. Bennardo – Cropalati | 20–21 Aprile 2012</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <span class="award-icon">🥇</span>
+        <div class="award-content">
+          <div class="award-title">1° Posto Assoluto – V Concorso Nazionale Musicale "Le Note in Chiave"</div>
+          <div class="award-place">Hello Music by Roland School – Acri (CS) | 17–19 Maggio 2011</div>
+        </div>
+      </div>
+
+      <div class="award-item">
+        <span class="award-icon">🥇</span>
+        <div class="award-content">
+          <div class="award-title">1° Posto – I Concorso Musicale Nazionale Gustav Mahler</div>
+          <div class="award-place">Accademia Musicale Gustav Mahler – Trebisacce (CS) | 6–8 Maggio 2011</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Progetti                 -->
+    <!-- ======================== -->
+    <div class="cv-section" id="progetti">
+      <h2><i class="fas fa-code"></i> Progetti</h2>
+
+      <div class="project-card">
+        <h3>🌐 Sito Curriculum Professionale Personale (Sviluppo Full-Stack)</h3>
+        <div class="project-date">Marzo 2024</div>
+        <ul>
+          <li>Progettazione e implementazione completa dell'interfaccia utente (Frontend) e della logica di gestione dati (Backend).</li>
+          <li>Ottimizzazione per dispositivi mobili e gestione del database personale.</li>
+        </ul>
+        <a href="https://gramisciemanuele.it/" target="_blank" rel="noopener">gramisciemanuele.it</a>
+      </div>
+
+      <div class="project-card">
+        <h3>☁️ Cloud personale con Syncthing e Raspberry Pi 4</h3>
+        <p>Creazione di un cloud personale utilizzando Syncthing su un Raspberry Pi 4 Model B (4 GB RAM) per la configurazione di server Linux, gestione di reti e ottimizzazione della sicurezza dei dati.</p>
+        <ul>
+          <li>Sistema di sincronizzazione decentralizzato sempre attivo</li>
+          <li>Distribuzione Linux leggera per massimizzare efficienza energetica e prestazioni</li>
+          <li>Backup e sincronizzazione automatizzati tra più dispositivi (rete locale e remota)</li>
+          <li>Sicurezza dei dati tramite crittografia e autenticazione personalizzata</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>🕹️ Cabinato Arcade Personalizzato</h3>
+        <div class="project-date">Maggio–Giugno 2020</div>
+        <p>Progettazione e costruzione di un cabinato arcade da zero utilizzando Raspberry Pi 4 Model B per l'emulazione di giochi retrò.</p>
+        <ul>
+          <li>Configurazione Raspberry Pi e software di emulazione</li>
+          <li>Costruzione del mobile in legno e assemblaggio hardware (joystick, pulsanti, altoparlanti)</li>
+          <li>Progettazione e costruzione hardware DIY</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>💻 Assemblaggio, Riparazione e Ottimizzazione PC/Laptop/Smartphone</h3>
+        <div class="project-date">2006 – Attuale</div>
+        <ul>
+          <li>Assemblaggio di PC desktop personalizzati (gaming, lavoro, ecc.)</li>
+          <li>Riparazione di smartphone Android e iOS (schermi, batterie, componenti)</li>
+          <li>Upgrade hardware su laptop e desktop (SSD, RAM, ecc.)</li>
+          <li>Diagnosi e risoluzione problemi hardware/software per privati e piccoli clienti</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>🎮 Modifica di ROM e ISO per Game Boy Advance e Console Varie</h3>
+        <p>Modifica di ROM di giochi per GBA e altre console per creare storie personalizzate, nuovi dialoghi e ambientazioni.</p>
+        <ul>
+          <li>Editing grafico (modifica di sprite e asset)</li>
+          <li>Basi di reverse engineering per ROM</li>
+          <li>Apprendimento autonomo di strumenti tecnici</li>
+        </ul>
+      </div>
+
+      <div class="project-card">
+        <h3>📱 Installazione e Personalizzazione di Custom ROM Android</h3>
+        <div class="project-date">2009 – Attuale</div>
+        <p>Personalizzazione e ottimizzazione di sistemi operativi per smartphone Android, incluso overclock del processore.</p>
+        <ul>
+          <li>Installazione di Custom ROM, root e ottimizzazione del sistema</li>
+          <li>Strumenti ADB e Fastboot per la gestione dei dispositivi</li>
+          <li>Sblocco del bootloader, flashing di recovery personalizzate (TWRP, Orange FOX)</li>
+          <li>Gestione di file system e troubleshooting</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Competenze Tecniche      -->
+    <!-- ======================== -->
+    <div class="cv-section" id="competenze-tecniche">
+      <h2><i class="fas fa-cogs"></i> Competenze Tecniche</h2>
+
+      <div class="tech-subsection">
+        <h3><i class="fab fa-windows"></i> Windows</h3>
+        <ul>
+          <li>Installazione e formattazione pulita, utilizzo avanzato, gestione del sistema, configurazione e risoluzione dei problemi.</li>
+        </ul>
+      </div>
+
+      <div class="tech-subsection">
+        <h3><i class="fab fa-linux"></i> Linux</h3>
+        <ul>
+          <li>Installazione e formattazione pulita; familiarità con Ubuntu, Xubuntu, Kali, Debian.</li>
+          <li>Gestione della shell (Bash), installazione di pacchetti e configurazione del sistema.</li>
+        </ul>
+      </div>
+
+      <div class="tech-subsection">
+        <h3><i class="fab fa-apple"></i> macOS</h3>
+        <ul>
+          <li>Configurazione del sistema e gestione degli aggiornamenti.</li>
+        </ul>
+      </div>
+
+      <div class="tech-subsection">
+        <h3><i class="fas fa-mobile-alt"></i> Android / iOS</h3>
+        <ul>
+          <li>Personalizzazione, troubleshooting e ottimizzazione dei dispositivi.</li>
+        </ul>
+      </div>
+
+      <div class="tech-subsection">
+        <h3><i class="fas fa-microchip"></i> Hardware &amp; BIOS</h3>
+        <ul>
+          <li>Installazione, configurazione ed esperienza utente avanzata di sistemi operativi e familiarità con il BIOS.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Competenze Linguistiche  -->
+    <!-- ======================== -->
+    <div class="cv-section" id="lingue">
+      <h2><i class="fas fa-globe"></i> Competenze Linguistiche</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">🇮🇹 Italiano — Madrelingua</span>
+        <span class="skill-tag">🇬🇧 Inglese</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Certificazioni / Altro   -->
+    <!-- ======================== -->
+    <div class="cv-section" id="certificazioni">
+      <h2><i class="fas fa-certificate"></i> Certificazioni e Competenze</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Pacchetto Office</span>
+        <span class="skill-tag">Attestato LIM e Tablet</span>
+        <span class="skill-tag">EIPASS 7 Moduli User</span>
+        <span class="skill-tag">Certificazione Coding</span>
+        <span class="skill-tag">IDCERT DigCompEdu C2</span>
+        <span class="skill-tag">DIGCOMP 2.2 Livello 8</span>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- Privacy                  -->
+    <!-- ======================== -->
+    <p style="text-align:center; font-size:0.78rem; color:var(--text-color); opacity:0.4; margin-top:1rem; line-height:1.6; max-width:600px; margin-left:auto; margin-right:auto;">
+      Autorizzo il trattamento dei miei dati personali presenti nel CV ai sensi dell'art. 13 d. lgs. 30 giugno 2003 n. 196 — "Codice in materia di protezione dei dati personali" e dell'art. 13 GDPR 679/16 — "Regolamento europeo sulla protezione dei dati personali".
+    </p>
+
+  </div>
+
+  <footer>
+    © 2026 Emanuele Gramisci | <a href="cookie-policy.html">Cookie Policy</a>
+  </footer>
+
+</body>
+</html>
