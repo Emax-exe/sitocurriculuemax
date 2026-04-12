@@ -85,7 +85,7 @@
 <p class="lang" data-lang="en">Concert Guitarist and Educator</p>
 </header>
 <main>
-<section id="chi-sono" class="fade-in">
+<section id="chi-sono">
 <h2 class="lang" data-lang="it">Chi sono</h2>
 <h2 class="lang" data-lang="en">About Me</h2>
 <p class="bio lang" data-lang="it">
@@ -97,7 +97,7 @@
         With passion and dedication, I guide students of all ages in developing musical sensitivity and instrumental technique, nurturing listening skills and expressive performance.
       </p>
 </section>
-<section id="cv" class="fade-in">
+<section id="cv">
 <h2 class="lang" data-lang="it">Curriculum</h2>
 <h2 class="lang" data-lang="en">Curriculum Vitae</h2>
 <div class="cv-wrapper"><a class="contact-button" download="" href="CV Emanuele Gramisci.pdf">
@@ -105,7 +105,7 @@
 <span class="lang" data-lang="en">📄 Download my CV 📄</span>
 </a></div>
 </section>
-<section id="eventi" class="fade-in">
+<section id="eventi">
 <h2 class="lang" data-lang="it">Eventi e Concerti Futuri</h2>
 <h2 class="lang" data-lang="en">Next Events &amp; Concerts</h2>
 <p class="lang" data-lang="it" style="text-align: center;">Clicca sull'evento per tutte le informazioni! </p>
@@ -115,7 +115,7 @@
 <div class="event lang" data-lang="en"><strong>July 6, 2026 — 6:00 PM</strong> – Solo concert in Mottafollone</div>
 </a>
 </section>
-<section id="social" class="fade-in">
+<section id="social">
 <h2 class="lang" data-lang="it">Social</h2>
 <h2 class="lang" data-lang="en">Social</h2>
 <div class="contact-button-container">
@@ -125,7 +125,7 @@
 <a class="contact-button" href="https://www.linkedin.com/in/emanuele-gramisci-311628206/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
 </div>
 </section>
-<section id="contatti" class="fade-in">
+<section id="contatti">
 <h2 class="lang" data-lang="it">Contatti</h2>
 <h2 class="lang" data-lang="en">Contacts</h2>
 <div class="contact-button-container">
@@ -197,22 +197,7 @@
     const savedLang = localStorage.getItem('language') || 'it';
     setLanguage(savedLang);
 
-    /* --- Fade-in animation with IntersectionObserver --- */
-    const fadeObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          fadeObserver.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -40px 0px'
-    });
 
-    document.querySelectorAll('.fade-in').forEach(el => {
-      fadeObserver.observe(el);
-    });
 </script>
 
 <!-- Image modal -->
