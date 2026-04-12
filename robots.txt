@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Pagina studenti non indicizzata (ha già noindex nel meta)
+Disallow: /studenti.html
+
+# Materiale didattico non indicizzato
+Disallow: /materiale/
+
+# Sitemap
+Sitemap: https://gramisciemanuele.it/sitemap.xml
