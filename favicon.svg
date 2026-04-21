@@ -1,30 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <style>
-      .bg { fill: #600000; }
-      .gold { stroke: #d4a373; fill: none; }
-      .cream { fill: #faedcd; }
-      .text { 
-        fill: #600000; 
-        font-family: Georgia, 'Times New Roman', serif; 
-        font-weight: normal; 
-      }
-    </style>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9a0028"/>
+      <stop offset="100%" stop-color="#600018"/>
+    </linearGradient>
   </defs>
-
-  <rect width="100" height="100" rx="15" class="bg" />
-
-  <circle cx="50" cy="50" r="45" class="gold" stroke-width="1" />
-  
-  <circle cx="50" cy="50" r="41" class="gold" stroke-width="1" stroke-dasharray="4 3" />
-  
-  <circle cx="50" cy="50" r="37" class="gold" stroke-width="1.5" />
-  
-  <circle cx="50" cy="50" r="32" class="gold" stroke-width="3.5" stroke-dasharray="0 10" stroke-linecap="round" />
-  
-  <circle cx="50" cy="50" r="28" class="gold" stroke-width="1" />
-
-  <circle cx="50" cy="50" r="26" class="cream" />
-
-  <text x="50" y="59" font-size="26" text-anchor="middle" class="text" letter-spacing="-1">EG</text>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <text x="32" y="43" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="-1">EG</text>
 </svg>
