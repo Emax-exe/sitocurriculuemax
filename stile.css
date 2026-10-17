@@ -511,6 +511,19 @@ footer a:hover {
     font-size: 0.9rem;
   }
 
+  /* Social a due a due, pulsanti di uguale larghezza */
+  #social .contact-button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  #social .contact-button {
+    width: auto;
+    justify-content: center;
+  }
+
 
   main {
     padding: 1.5rem 0.75rem;
