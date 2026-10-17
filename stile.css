@@ -539,3 +539,373 @@ footer a:hover {
     font-size: 1.2rem;
   }
 }
+
+/* ========================================
+   DESKTOP (≥ 1024px) — solo index.html (body.home).
+   Sotto questa larghezza vale il layout mobile qui sopra.
+   ======================================== */
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .home {
+    --page-gutter: max(2rem, calc((100vw - 1200px) / 2));
+  }
+
+  html:has(body.home) {
+    scroll-padding-top: 88px;
+  }
+
+  /* --- Barra di navigazione --- */
+  .home #lang-menu-container {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 72px;
+    padding: 0 calc(var(--page-gutter) + 72px) 0 var(--page-gutter); /* a destra: spazio per il pulsante tema */
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    transition: background var(--transition), box-shadow var(--transition);
+  }
+
+  html.nav-scrolled .home #lang-menu-container {
+    background: var(--card-bg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .home .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-right: auto;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .home .nav-monogram {
+    width: 38px;
+    height: 38px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+  }
+
+  html.nav-scrolled .home .nav-brand {
+    color: var(--accent-text);
+  }
+
+  .home #hamburger-menu {
+    order: 1;
+    margin-top: 0;
+  }
+
+  .home #lang-switcher {
+    order: 2;
+  }
+
+  .home #hamburger-toggle {
+    display: none;
+  }
+
+  .home #hamburger-links {
+    display: flex;
+    position: static;
+    opacity: 1;
+    transform: none;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    min-width: 0;
+    gap: 0.15rem;
+    overflow: visible;
+  }
+
+  .home #hamburger-links li a,
+  .home #hamburger-links li a:hover {
+    border-left: none;
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #fff;
+  }
+
+  .home #hamburger-links li a:hover {
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  html.nav-scrolled .home #hamburger-links li a {
+    color: var(--text-color);
+  }
+
+  html.nav-scrolled .home #hamburger-links li a:hover {
+    color: var(--accent-text);
+    background: rgba(128, 0, 32, 0.08);
+  }
+
+  .home #lang-switcher button {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .home #lang-switcher button.active-lang,
+  .home #lang-switcher button:hover {
+    background: #fff;
+    color: var(--bordeaux);
+    border-color: #fff;
+  }
+
+  html.nav-scrolled .home #lang-switcher button {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-color: var(--accent);
+  }
+
+  html.nav-scrolled .home #lang-switcher button.active-lang,
+  html.nav-scrolled .home #lang-switcher button:hover {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  .home #theme-toggle {
+    top: 14px;
+    right: var(--page-gutter);
+  }
+
+  /* --- Hero: testo a sinistra, foto del concerto a destra --- */
+  .home header {
+    min-height: min(88vh, 820px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    padding: 120px var(--page-gutter) 5rem;
+    background: linear-gradient(120deg, #4a0012 0%, var(--bordeaux-dark) 45%, var(--bordeaux) 100%);
+  }
+
+  .home header::before {
+    display: none;
+  }
+
+  .home header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 58%;
+    /* sfumatura scura in alto per la leggibilità del menu */
+    background: linear-gradient(to bottom, rgba(30, 0, 8, 0.55) 0, transparent 140px),
+                url('concerto.jpg') 60% 30% / cover no-repeat;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 35%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 35%);
+  }
+
+  .home header > a {
+    display: none; /* la foto profilo su desktop è nella sezione Chi sono */
+  }
+
+  .home header h1 {
+    font-size: clamp(3.4rem, 5.5vw, 5.2rem);
+    line-height: 1.02;
+    max-width: 8em;
+    margin: 0.4rem 0 1.25rem;
+  }
+
+  .home header p {
+    font-size: 1.4rem;
+    opacity: 0.9;
+    margin: 0;
+  }
+
+  .home header .hero-eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    opacity: 0.75;
+  }
+
+  .home .hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .home .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.7rem;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition);
+  }
+
+  .home .hero-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateY(-2px);
+  }
+
+  .home .hero-btn-primary {
+    background: #fff;
+    border-color: #fff;
+    color: var(--bordeaux);
+  }
+
+  .home .hero-btn-primary:hover {
+    background: #f6e9ed;
+  }
+
+  /* --- Contenuto: griglia a due colonne --- */
+  .home main {
+    max-width: 1200px;
+    padding: 5rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .home main > section {
+    margin-bottom: 0;
+    padding: 2.5rem;
+  }
+
+  .home main > section h2 {
+    position: relative;
+    text-align: left;
+    font-size: 1.8rem;
+    margin-top: 0;
+    padding-bottom: 0.8rem;
+  }
+
+  .home main > section h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 48px;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--accent-text);
+  }
+
+  .home #chi-sono,
+  .home .highlights {
+    grid-column: 1 / -1;
+  }
+
+  /* Chi sono: foto a sinistra, testo a destra */
+  .home #chi-sono {
+    display: grid;
+    grid-template-columns: minmax(260px, 360px) 1fr;
+    grid-template-rows: 1fr auto auto 1fr;
+    column-gap: 4rem;
+    padding: 3rem;
+  }
+
+  .home .about-photo {
+    display: block;
+    grid-column: 1;
+    grid-row: 1 / span 4;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .home #chi-sono h2 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .home #chi-sono .bio {
+    grid-column: 2;
+    grid-row: 3;
+    text-align: left;
+    font-size: 1.2rem;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  /* Punti di forza */
+  .home .highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .home .highlight {
+    background: var(--card-bg);
+    border-top: 4px solid var(--accent);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    line-height: 1.5;
+  }
+
+  .home .highlight strong {
+    display: block;
+    font-size: 1.9rem;
+    letter-spacing: -0.02em;
+    color: var(--accent-text);
+    margin-bottom: 0.4rem;
+  }
+
+  .home .highlight span {
+    font-size: 0.95rem;
+    opacity: 0.85;
+  }
+
+  /* Pulsanti allineati a sinistra, social in riga */
+  .home #cv .cv-wrapper {
+    justify-content: flex-start;
+  }
+
+  .home main .contact-button-container {
+    align-items: flex-start;
+  }
+
+  .home #social .contact-button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home #social .contact-button {
+    width: auto;
+    justify-content: center;
+  }
+}
+
+/* Desktop stretto: nome nascosto nella barra, menu più compatto */
+@media (min-width: 1024px) and (max-width: 1149px) {
+  .home .nav-brand-name {
+    display: none;
+  }
+
+  .home #hamburger-links li a,
+  .home #hamburger-links li a:hover {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.88rem;
+  }
+}

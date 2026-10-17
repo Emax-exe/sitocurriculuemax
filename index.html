@@ -114,8 +114,10 @@
   </script>
 </head>
 
-<body>
+<body class="home">
   <div id="lang-menu-container">
+    <a class="nav-brand desktop-only" href="#"><span class="nav-monogram">EG</span><span class="nav-brand-name">Emanuele
+        Gramisci</span></a>
     <div id="lang-switcher">
       <button class="contact-button" onclick="setLanguage('it')" id="btn-lang-it">IT</button>
       <button class="contact-button" onclick="setLanguage('en')" id="btn-lang-en">EN</button>
@@ -137,12 +139,28 @@
   <header>
     <a href="#" onclick="openModal('profile-photo.jpg'); return false;"><img alt="Foto di Emanuele Gramisci"
         class="profile-pic" src="profile-photo.jpg" width="150" height="150" /></a>
+    <p class="hero-eyebrow desktop-only">
+      <span class="lang" data-lang="it">Chitarra classica · Musica da camera</span>
+      <span class="lang" data-lang="en">Classical guitar · Chamber music</span>
+    </p>
     <h1>Emanuele Gramisci</h1>
     <p class="lang" data-lang="it">Concertista e Docente</p>
     <p class="lang" data-lang="en">Concert Guitarist and Educator</p>
+    <div class="hero-actions desktop-only">
+      <a class="hero-btn hero-btn-primary" href="curriculum.html">
+        <span class="lang" data-lang="it">Scopri il curriculum</span>
+        <span class="lang" data-lang="en">Explore my CV</span>
+      </a>
+      <a class="hero-btn" href="#contatti">
+        <span class="lang" data-lang="it">Contattami</span>
+        <span class="lang" data-lang="en">Get in touch</span>
+      </a>
+    </div>
   </header>
   <main>
     <section id="chi-sono">
+      <img class="about-photo desktop-only" src="profile-photo.jpg" alt="Emanuele Gramisci con la chitarra"
+        width="682" height="1024" loading="lazy" />
       <h2 class="lang" data-lang="it">Chi sono</h2>
       <h2 class="lang" data-lang="en">About Me</h2>
       <p class="bio lang" data-lang="it">
@@ -156,6 +174,29 @@
         technique, nurturing listening skills and expressive performance.
       </p>
     </section>
+    <!-- Punti di forza (solo desktop): dati presi da curriculum.html -->
+    <div class="highlights desktop-only">
+      <div class="highlight">
+        <strong>110/110</strong>
+        <span class="lang" data-lang="it">Due diplomi accademici di II livello: Chitarra e Musica da camera</span>
+        <span class="lang" data-lang="en">Two second-level academic degrees: Guitar and Chamber Music</span>
+      </div>
+      <div class="highlight">
+        <strong>AB56</strong>
+        <span class="lang" data-lang="it">Abilitazione all'insegnamento della chitarra</span>
+        <span class="lang" data-lang="en">Qualified guitar teacher (Italian class AB56)</span>
+      </div>
+      <div class="highlight">
+        <strong>AMA Calabria</strong>
+        <span class="lang" data-lang="it">Concertista solista all'Ionio International Music Festival</span>
+        <span class="lang" data-lang="en">Solo performer at the Ionio International Music Festival</span>
+      </div>
+      <div class="highlight">
+        <strong>6</strong>
+        <span class="lang" data-lang="it">Premi in concorsi musicali nazionali e internazionali</span>
+        <span class="lang" data-lang="en">Awards in national and international music competitions</span>
+      </div>
+    </div>
     <section id="cv">
       <h2 class="lang" data-lang="it">Curriculum</h2>
       <h2 class="lang" data-lang="en">Curriculum Vitae</h2>
@@ -228,6 +269,13 @@
     }
 
     setLanguage(document.documentElement.lang);
+
+    /* --- Barra di navigazione desktop: sfondo pieno dopo lo scroll --- */
+    function updateNav() {
+      document.documentElement.classList.toggle('nav-scrolled', window.scrollY > 40);
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
   </script>
 
   <!-- Image modal -->
