@@ -1,10 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9a0028"/>
-      <stop offset="100%" stop-color="#600018"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
-  <text x="32" y="43" font-family="Georgia, serif" font-size="30" font-weight="bold" fill="white" text-anchor="middle" letter-spacing="-1">EG</text>
+  <!-- Logo: buca della chitarra con rosetta e corde (bordeaux del sito) -->
+  <circle cx="32" cy="32" r="32" fill="#800020"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="#fff" stroke-opacity="0.85" stroke-width="4" stroke-dasharray="2.36 2.352"/>
+  <circle cx="32" cy="32" r="18.5" fill="#3d000e" stroke="#fff" stroke-width="3"/>
+  <path d="M25 .8V63.2M32 0V64M39 .8V63.2" stroke="#fff" stroke-width="2.2"/>
 </svg>

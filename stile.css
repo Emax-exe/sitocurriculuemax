@@ -176,17 +176,10 @@ html.nav-open body {
   text-overflow: ellipsis;
 }
 
-.nav-monogram {
-  width: 36px;
-  height: 36px;
+.nav-logo {
+  width: 38px;
+  height: 38px;
   flex: none;
-  border: 2px solid currentColor;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Georgia, serif;
-  font-size: 0.9rem;
 }
 
 html.nav-scrolled #site-nav .nav-brand,
@@ -849,14 +842,14 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Telefoni: nella barra della home (lingua, tema e menu) c'è posto solo per il monogramma */
+/* Telefoni: nella barra della home (lingua, tema e menu) c'è posto solo per il logo */
 @media (max-width: 559px) {
   #site-nav .nav-brand-name {
     display: none;
   }
 }
 
-/* Telefoni molto stretti: solo il monogramma anche nelle sottopagine */
+/* Telefoni molto stretti: solo il logo anche nelle sottopagine */
 @media (max-width: 400px) {
   .nav-brand-name {
     display: none;
@@ -946,10 +939,9 @@ footer a:hover {
     gap: 1.5rem;
   }
 
-  .nav-monogram {
-    width: 38px;
-    height: 38px;
-    font-size: 0.95rem;
+  .nav-logo {
+    width: 42px;
+    height: 42px;
   }
 
   .nav-brand {
