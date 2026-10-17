@@ -16,17 +16,18 @@ Deploy = push to `main`.
 
 ## Structure
 
-- `index.html` — home page. Only page with IT/EN switching: bilingual content is duplicated in elements with class `lang` and `data-lang="it|en"`; `setLanguage()` toggles visibility. When editing home text, update both language variants.
+- `index.html` — home page. Only page with IT/EN switching: bilingual content is duplicated in elements with class `lang` and `data-lang="it|en"`; visibility is driven by `<html lang>` via CSS in `stile.css` (an inline `<head>` script restores the saved language before render; `setLanguage()` switches it). When editing home text, update both language variants.
 - `curriculum.html` — full CV (Italian only). Links to `CV Emanuele Gramisci.pdf` for download; keep the PDF in sync when CV content changes.
-- `studenti.html` — student area (Google Classroom instructions); `noindex` and disallowed in `robots.txt`. `materiale/` holds teaching PDFs, also disallowed.
+- `studenti.html` — student area (Google Classroom instructions); `noindex` (deliberately *not* disallowed in `robots.txt`, or crawlers couldn't read the noindex). `materiale/` holds teaching PDFs, disallowed in `robots.txt`.
 - `cookie-policy.html` — cookie policy.
 - `google8f1a32685035c3f6.html` — Google Search Console verification file; do not remove or rename.
 
 ## Styling and theming
 
 - `stile.css` is the shared design system (CSS variables on `:root`: bordeaux palette, radii, shadows, transitions). Each subpage also has a large page-specific inline `<style>` block.
-- Dark/light theme is set via JS by writing CSS variables on `document.documentElement`, persisted in `localStorage('theme')`. The toggle lives only on `index.html`; `curriculum.html` and `studenti.html` contain a duplicated inline script with the same theme maps to apply the saved theme. If theme colors change, update `index.html` **and** those inline copies.
-- External deps: Google Fonts (Inter) and Font Awesome 6.5.0 from cdnjs.
+- Dark/light theme: colors live in `stile.css` (`:root` and `:root[data-theme="dark"]`). `tema.js`, loaded in every page's `<head>`, sets `data-theme` from `localStorage('theme')` and defines `toggleTheme()` (the toggle button is only on `index.html`).
+- Use `--accent` for backgrounds/borders (white text on it) and `--accent-text` for colored text and links — the latter is lightened in dark mode for contrast.
+- External deps: Google Fonts (Inter) and Font Awesome 6.5.0 from cdnjs. Both are declared as third parties in `cookie-policy.html`; keep it updated if external resources or `localStorage` keys change.
 
 ## SEO
 

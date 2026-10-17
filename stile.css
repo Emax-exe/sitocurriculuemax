@@ -14,6 +14,7 @@
   --card-bg: #f1f1f1;
   --text-color: #111;
   --accent: #800020;
+  --accent-text: #800020; /* accento per testi e link (schiarito nel tema scuro) */
   --event-bg: #2a2a2a;
   --event-text: #fff;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -23,6 +24,20 @@
   --radius-md: 16px;
   --radius-lg: 25px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Tema scuro (attivato da tema.js tramite data-theme) --- */
+:root[data-theme="dark"] {
+  --background: #121212;
+  --card-bg: #1e1e1e;
+  --text-color: #eee;
+  --accent-text: #ff8fa3;
+}
+
+/* --- Lingua (index.html): mostra solo i testi della lingua attiva --- */
+html[lang="it"] .lang[data-lang="en"],
+html[lang="en"] .lang[data-lang="it"] {
+  display: none;
 }
 
 /* --- Global Reset & Base --- */
@@ -106,7 +121,7 @@ h1 {
 }
 
 h2 {
-  color: var(--accent);
+  color: var(--accent-text);
   text-align: center;
   margin-bottom: 1rem;
   font-weight: 600;
@@ -260,7 +275,7 @@ footer {
 }
 
 footer a {
-  color: var(--accent);
+  color: var(--accent-text);
   text-decoration: none;
   transition: opacity var(--transition);
 }
@@ -409,7 +424,7 @@ footer a:hover {
 
 #hamburger-links li a:hover {
   border-left: 3px solid var(--accent);
-  color: var(--accent);
+  color: var(--accent-text);
   padding-left: 1.4rem;
 }
 
@@ -450,6 +465,11 @@ footer a:hover {
   top: 20px;
   right: 30px;
   color: white;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  line-height: 1;
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;

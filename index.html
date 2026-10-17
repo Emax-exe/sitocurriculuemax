@@ -80,43 +80,6 @@
       "credentialCategory": "Abilitazione"
     }
   ],
-  "performerIn": {
-    "@type": "Event",
-    "name": "Concerto solista a Mottafollone",
-    "description": "Concerto solista di chitarra classica di Emanuele Gramisci a Mottafollone.",
-    "image": "https://gramisciemanuele.it/profile-photo.jpg",
-    "startDate": "2026-07-06T18:00:00+02:00",
-    "endDate": "2026-07-06T20:00:00+02:00",
-    "eventStatus": "https://schema.org/EventScheduled",
-    "url": "https://www.amaeventi.org/evento/emanuele-gramisci-mf26/",
-    "location": {
-      "@type": "Place",
-      "name": "Mottafollone",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Mottafollone",
-        "addressRegion": "CS",
-        "addressCountry": "IT"
-      }
-    },
-    "performer": {
-      "@type": "Person",
-      "name": "Emanuele Gramisci"
-    },
-    "organizer": {
-      "@type": "Organization",
-      "name": "AMA Calabria",
-      "url": "https://www.amaeventi.org/"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://www.amaeventi.org/evento/emanuele-gramisci-mf26/",
-      "price": "0",
-      "priceCurrency": "EUR",
-      "availability": "https://schema.org/InStock",
-      "validFrom": "2026-01-01T00:00:00+02:00"
-    }
-  },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://gramisciemanuele.it/"
@@ -142,6 +105,13 @@
   <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     rel="stylesheet" />
   <link rel="stylesheet" href="stile.css" />
+  <script src="tema.js"></script>
+  <script>
+    /* Applica la lingua salvata prima del rendering (vedi setLanguage) */
+    try {
+      document.documentElement.lang = localStorage.getItem('language') === 'en' ? 'en' : 'it';
+    } catch (e) {}
+  </script>
 </head>
 
 <body>
@@ -153,13 +123,13 @@
     <div id="hamburger-menu">
       <button id="hamburger-toggle" aria-label="Apri menu di navigazione" aria-expanded="false">☰</button>
       <ul id="hamburger-links" role="navigation" aria-label="Menu principale">
-        <li><a href="#chi-sono">Chi sono</a></li>
-        <li><a href="#cv">Curriculum</a></li>
-        <li><a href="curriculum.html">CV Completo</a></li>
-        <li><a href="#eventi">Eventi</a></li>
-        <li><a href="#contatti">Contatti</a></li>
+        <li><a href="#chi-sono"><span class="lang" data-lang="it">Chi sono</span><span class="lang" data-lang="en">About me</span></a></li>
+        <li><a href="#cv"><span class="lang" data-lang="it">Curriculum</span><span class="lang" data-lang="en">Curriculum Vitae</span></a></li>
+        <li><a href="curriculum.html"><span class="lang" data-lang="it">CV Completo</span><span class="lang" data-lang="en">Full CV (Italian)</span></a></li>
+        <li><a href="#eventi"><span class="lang" data-lang="it">Eventi</span><span class="lang" data-lang="en">Events</span></a></li>
+        <li><a href="#contatti"><span class="lang" data-lang="it">Contatti</span><span class="lang" data-lang="en">Contacts</span></a></li>
         <li><a href="#social">Social</a></li>
-        <li><a href="studenti.html">Area Studenti</a></li>
+        <li><a href="studenti.html"><span class="lang" data-lang="it">Area Studenti</span><span class="lang" data-lang="en">Students Area</span></a></li>
       </ul>
     </div>
   </div>
@@ -203,15 +173,11 @@
     <section id="eventi">
       <h2 class="lang" data-lang="it">Eventi e Concerti Futuri</h2>
       <h2 class="lang" data-lang="en">Next Events &amp; Concerts</h2>
-      <p class="lang" data-lang="it" style="text-align: center;">Clicca sull'evento per tutte le informazioni! </p>
-      <p class="lang" data-lang="en" style="text-align: center;">Click on the event for more information!</p>
-      <a class="event-link" href="https://www.amaeventi.org/evento/emanuele-gramisci-mf26/" target="_blank"
-        rel="noopener noreferrer">
-        <div class="event lang" data-lang="it"><strong>6 Luglio 2026 — ore 18:00</strong> – Concerto solista a
-          Mottafollone</div>
-        <div class="event lang" data-lang="en"><strong>July 6, 2026 — 6:00 PM</strong> – Solo concert in Mottafollone
-        </div>
-      </a>
+      <!-- Per un nuovo concerto: <a class="event-link" href="..."> con dentro un <div class="event lang"> per lingua -->
+      <div class="event lang" data-lang="it"><strong>Nuove date in arrivo</strong> – seguimi sui social per restare
+        aggiornato!</div>
+      <div class="event lang" data-lang="en"><strong>New dates coming soon</strong> – follow me on social media to stay
+        updated!</div>
     </section>
     <section id="social">
       <h2 class="lang" data-lang="it">Social</h2>
@@ -248,65 +214,25 @@
   <!-- ======================== -->
 
   <script>
-    /* --- Theme management --- */
-    const root = document.documentElement;
-    const themeToggle = document.getElementById("theme-toggle");
-
-    const lightTheme = {
-      '--background': '#ffffff',
-      '--card-bg': '#f1f1f1',
-      '--text-color': '#111',
-      '--accent': '#800020',
-      '--event-bg': '#2a2a2a',
-      '--event-text': '#fff'
-    };
-
-    const darkTheme = {
-      '--background': '#121212',
-      '--card-bg': '#1e1e1e',
-      '--text-color': '#eee',
-      '--accent': '#800020',
-      '--event-bg': '#2a2a2a',
-      '--event-text': '#fff'
-    };
-
-    function applyTheme(theme) {
-      Object.entries(theme).forEach(([key, value]) => {
-        root.style.setProperty(key, value);
-      });
-    }
-
-    function toggleTheme() {
-      const current = localStorage.getItem('theme') || 'light';
-      const next = current === 'dark' ? 'light' : 'dark';
-      localStorage.setItem('theme', next);
-      applyTheme(next === 'dark' ? darkTheme : lightTheme);
-    }
-
-    themeToggle.addEventListener('click', toggleTheme);
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    applyTheme(savedTheme === 'dark' ? darkTheme : lightTheme);
+    /* --- Theme management (tema.js) --- */
+    document.getElementById("theme-toggle").addEventListener('click', toggleTheme);
 
     /* --- Language management --- */
+    // La visibilità dei testi .lang dipende da <html lang> (vedi stile.css)
     function setLanguage(lang) {
-      localStorage.setItem('language', lang);
-      document.querySelectorAll('.lang').forEach(el => {
-        el.style.display = el.dataset.lang === lang ? '' : 'none';
-      });
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('language', lang); } catch (e) {}
       // Highlight active language button
       document.getElementById('btn-lang-it').classList.toggle('active-lang', lang === 'it');
       document.getElementById('btn-lang-en').classList.toggle('active-lang', lang === 'en');
     }
 
-    const savedLang = localStorage.getItem('language') || 'it';
-    setLanguage(savedLang);
-
-
+    setLanguage(document.documentElement.lang);
   </script>
 
   <!-- Image modal -->
   <div class="modal" id="imageModal">
-    <span class="close" onclick="closeModal()" aria-label="Chiudi immagine">×</span>
+    <button type="button" class="close" onclick="closeModal()" aria-label="Chiudi immagine">×</button>
     <img class="modal-content" id="modalImage" alt="Foto ingrandita" />
   </div>
   <script>
@@ -315,6 +241,7 @@
       const modalImg = document.getElementById("modalImage");
       modal.style.display = "flex";
       modalImg.src = src;
+      modal.querySelector(".close").focus();
       // Close on Escape key
       document.addEventListener('keydown', handleModalKey);
     }
