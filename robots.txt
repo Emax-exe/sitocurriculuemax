@@ -1,8 +1,5 @@
 User-agent: *
 Allow: /
 
-# Materiale didattico non indicizzato
-Disallow: /materiale/
-
 # Sitemap
 Sitemap: https://gramisciemanuele.it/sitemap.xml

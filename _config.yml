@@ -1,0 +1,3 @@
+# GitHub Pages: file del repository da non pubblicare sul sito
+exclude:
+  - CLAUDE.md

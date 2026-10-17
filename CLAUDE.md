@@ -18,9 +18,11 @@ Deploy = push to `main`.
 
 - `index.html` — home page. Only page with IT/EN switching: bilingual content is duplicated in elements with class `lang` and `data-lang="it|en"`; visibility is driven by `<html lang>` via CSS in `stile.css` (an inline `<head>` script restores the saved language before render; `setLanguage()` switches it). When editing home text, update both language variants.
 - `curriculum.html` — full CV (Italian only). Links to `CV Emanuele Gramisci.pdf` for download; keep the PDF in sync when CV content changes.
-- `studenti.html` — student area (Google Classroom instructions); `noindex` (deliberately *not* disallowed in `robots.txt`, or crawlers couldn't read the noindex). `materiale/` holds teaching PDFs, disallowed in `robots.txt`.
+- `studenti.html` — student area (Google Classroom instructions); `noindex` (deliberately *not* disallowed in `robots.txt`, or crawlers couldn't read the noindex).
 - `cookie-policy.html` — cookie policy.
 - `google8f1a32685035c3f6.html` — Google Search Console verification file; do not remove or rename.
+- `_config.yml` — only excludes repo-only files (e.g. this CLAUDE.md) from the GitHub Pages build; add new ones there.
+- `foto nuove da aggiungere/` — local folder of original photos, git-ignored; publish only web-optimized copies in the root.
 
 ## Styling and theming
 
