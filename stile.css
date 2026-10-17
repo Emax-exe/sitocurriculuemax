@@ -682,35 +682,28 @@ footer a:hover {
     right: var(--page-gutter);
   }
 
-  /* --- Hero: testo a sinistra, foto del concerto a destra --- */
+  /* --- Hero: foto del concerto a tutta larghezza, testo a destra sulla parete --- */
   .home header {
-    min-height: min(88vh, 820px);
+    min-height: 100vh; /* a tutto schermo: nessuna striscia bianca sotto */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     text-align: left;
-    padding: 120px var(--page-gutter) 5rem;
-    background: linear-gradient(120deg, #4a0012 0%, var(--bordeaux-dark) 45%, var(--bordeaux) 100%);
+    padding: 120px var(--page-gutter) 5rem calc(50% + 2rem);
+    background:
+      /* sfumatura scura in alto per la leggibilità del menu */
+      linear-gradient(to bottom, rgba(30, 0, 8, 0.55) 0, transparent 140px),
+      /* bordeaux da destra, dove c'è il testo */
+      linear-gradient(to right, rgba(74, 0, 18, 0) 28%, rgba(74, 0, 18, 0.8) 48%, rgb(74, 0, 18) 62%),
+      /* foto a tutta altezza (niente tagli sulla testa); a destra il colore della parete */
+      url('concerto-2025.jpg') left top / auto 100% no-repeat,
+      #e6e9e4;
   }
 
   .home header::before {
     display: none;
-  }
-
-  .home header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 58%;
-    /* sfumatura scura in alto per la leggibilità del menu */
-    background: linear-gradient(to bottom, rgba(30, 0, 8, 0.55) 0, transparent 140px),
-                url('concerto.jpg') 60% 30% / cover no-repeat;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 35%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 35%);
   }
 
   .home header > a {
@@ -807,26 +800,30 @@ footer a:hover {
     background: var(--accent-text);
   }
 
-  .home #chi-sono,
-  .home .highlights {
+  .home #chi-sono {
     grid-column: 1 / -1;
   }
 
   /* Chi sono: foto a sinistra, testo a destra */
   .home #chi-sono {
     display: grid;
-    grid-template-columns: minmax(260px, 360px) 1fr;
+    grid-template-columns: minmax(260px, 420px) 1fr;
     grid-template-rows: 1fr auto auto 1fr;
     column-gap: 4rem;
     padding: 3rem;
+    box-sizing: border-box;
+    /* occupa lo schermo sotto il menu: aprendo "Chi sono" le sezioni seguenti restano fuori vista */
+    min-height: calc(100vh - 104px);
   }
 
   .home .about-photo {
     display: block;
     grid-column: 1;
     grid-row: 1 / span 4;
+    align-self: center;
     width: 100%;
     height: auto;
+    max-height: calc(100vh - 104px - 6rem);
     aspect-ratio: 4 / 5;
     object-fit: cover;
     object-position: center 20%;
@@ -846,35 +843,6 @@ footer a:hover {
     font-size: 1.2rem;
     line-height: 1.85;
     margin: 0;
-  }
-
-  /* Punti di forza */
-  .home .highlights {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-
-  .home .highlight {
-    background: var(--card-bg);
-    border-top: 4px solid var(--accent);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 1.5rem;
-    box-shadow: var(--shadow-sm);
-    line-height: 1.5;
-  }
-
-  .home .highlight strong {
-    display: block;
-    font-size: 1.9rem;
-    letter-spacing: -0.02em;
-    color: var(--accent-text);
-    margin-bottom: 0.4rem;
-  }
-
-  .home .highlight span {
-    font-size: 0.95rem;
-    opacity: 0.85;
   }
 
   /* Pulsanti allineati a sinistra, social in riga */
