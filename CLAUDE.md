@@ -34,6 +34,7 @@ Deploy = push to `main`.
 - Logo: bordeaux badge with the guitar sound hole, rosette, six strings and the initials "EG" (Cormorant Garamond SemiBold, OFL, converted to paths so it never depends on fonts). The same SVG markup is `favicon.svg` and the inline `.nav-logo` in every page's `.nav-brand`; PNG copies `favicon-48/96/192.png` and `apple-touch-icon.png` (180px, full-bleed bordeaux) are linked in every page's `<head>`. If the logo changes, update all of these together.
 - Subpages use a static `.topbar` (brand, "Home" pill, theme toggle) defined in `stile.css`.
 - `curriculum.html` (`body.cv-page`, CSS in its inline `<style>`, desktop in its own ≥ 1024px landscape query): compact title header with PDF/contact buttons (no photo); `.cv-sidebar` is a sticky horizontal tab bar on mobile and a sticky sidebar with photo on desktop (active link set by an inline scroll script); photo gallery `galleria-2025-*.jpg` scrolls horizontally on mobile.
+- Pages load `stile.css?v=…` and `tema.js?v=…`: GitHub Pages lets browsers cache them for 10 minutes, so after changing either file bump the `v` date in all four pages, or visitors may get new HTML with old CSS.
 - External deps: Google Fonts (Inter) and Font Awesome 6.5.0 from cdnjs. Both are declared as third parties in `cookie-policy.html`; keep it updated if external resources or `localStorage` keys change.
 
 ## SEO
