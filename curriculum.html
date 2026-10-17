@@ -351,9 +351,249 @@
       .cv-section h2 { font-size: 1.15rem; }
       .timeline-entry .entry-title { font-size: 0.97rem; }
     }
+
+    /* ========================================
+       DESKTOP (≥ 1024px) — sotto questa larghezza vale il layout qui sopra.
+       Il markup solo-desktop usa la classe .desktop-only (vedi stile.css).
+       ======================================== */
+    @media (min-width: 1024px) {
+      html:has(body.cv-page) {
+        scroll-padding-top: 1.5rem;
+      }
+
+      .cv-page-container {
+        max-width: 1200px;
+        padding: 2.5rem 2rem 5rem;
+      }
+
+      /* --- Intestazione: titolo della pagina, nome e pulsanti (niente foto) --- */
+      .cv-header-card {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        column-gap: 2rem;
+        text-align: left;
+        padding: 1.75rem 2.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .cv-header-card h1 {
+        grid-column: 1;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0 0 0.2rem;
+      }
+
+      .cv-title-page {
+        display: block;
+        font-size: clamp(2rem, 2.8vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        margin-bottom: 0.5rem;
+      }
+
+      .cv-header-card .subtitle {
+        grid-column: 1;
+        font-size: 0.95rem;
+        opacity: 0.8;
+        margin: 0;
+      }
+
+      /* data di nascita e contatti restano nel PDF e nella versione mobile */
+      .cv-header-card .info-row {
+        display: none;
+      }
+
+      .cv-hero-actions {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        display: flex;
+        gap: 0.75rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .cv-hero-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        padding: 0.7rem 1.4rem;
+        border: 2px solid rgba(255, 255, 255, 0.8);
+        border-radius: 999px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all var(--transition);
+      }
+
+      .cv-hero-btn:hover {
+        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
+      }
+
+      .cv-hero-btn-primary {
+        background: #fff;
+        border-color: #fff;
+        color: var(--bordeaux);
+      }
+
+      .cv-hero-btn-primary:hover {
+        background: #f6e9ed;
+      }
+
+      /* il pulsante PDF è già nell'intestazione */
+      .cv-download-banner {
+        display: none;
+      }
+
+      /* --- Corpo: colonna laterale fissa + sezioni --- */
+      .cv-body {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+
+      .cv-sidebar {
+        display: block;
+        position: sticky;
+        top: 1.5rem;
+      }
+
+      .cv-sidebar-photo {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        object-position: center 25%;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+        margin-bottom: 1.5rem;
+      }
+
+      .cv-sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.15rem;
+        padding: 0.75rem;
+        background: var(--card-bg);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+      }
+
+      .cv-sidebar-nav a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 0.85rem;
+        border-radius: 10px;
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: background var(--transition), color var(--transition);
+      }
+
+      .cv-sidebar-nav a i {
+        width: 1.1rem;
+        text-align: center;
+        color: var(--accent-text);
+      }
+
+      .cv-sidebar-nav a:hover {
+        background: rgba(128, 0, 32, 0.08);
+        color: var(--accent-text);
+      }
+
+      .cv-sidebar-nav a.active {
+        background: var(--accent);
+        color: #fff;
+      }
+
+      .cv-sidebar-nav a.active i {
+        color: #fff;
+      }
+
+      /* --- Sezioni --- */
+      .cv-section {
+        padding: 2.5rem 3rem;
+      }
+
+      .cv-section h2 {
+        font-size: 1.6rem;
+      }
+
+      .presentation-text {
+        font-size: 1.05rem;
+      }
+
+      /* Premi, progetti e competenze su due colonne */
+      #premi,
+      #progetti,
+      #competenze-tecniche {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 2rem;
+      }
+
+      #premi h2,
+      #progetti h2,
+      #competenze-tecniche h2 {
+        grid-column: 1 / -1;
+      }
+
+      #premi .award-item:nth-last-child(2) {
+        border-bottom: none;
+      }
+
+      #progetti {
+        row-gap: 1.25rem;
+      }
+
+      #progetti .project-card,
+      #competenze-tecniche .tech-subsection {
+        margin-bottom: 0;
+      }
+
+      #competenze-tecniche {
+        row-gap: 1.25rem;
+      }
+
+      /* --- Galleria --- */
+      .cv-gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .cv-gallery img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
+        transition: transform var(--transition);
+      }
+
+      .cv-gallery img:hover {
+        transform: translateY(-4px);
+      }
+    }
+
+    /* Schermi desktop bassi: foto laterale quadrata, così la colonna resta tutta visibile */
+    @media (min-width: 1024px) and (max-height: 850px) {
+      .cv-sidebar-photo {
+        aspect-ratio: 1;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="cv-page">
 
   <div class="cv-page-container">
 
@@ -363,13 +603,21 @@
     <!-- Header Card              -->
     <!-- ======================== -->
     <div class="cv-header-card">
-      <h1>Emanuele Gramisci</h1>
+      <h1><span class="cv-title-page desktop-only">Curriculum Vitae</span><span class="cv-title-name">Emanuele Gramisci</span></h1>
       <p class="subtitle">Concertista e Docente di Chitarra Classica</p>
       <div class="info-row">
         <span><i class="fas fa-birthday-cake"></i> 08/03/1998</span>
         <span><i class="fas fa-flag"></i> Italiana</span>
         <span><i class="fas fa-phone"></i> (+39) 353 476 7603</span>
         <span><i class="fas fa-envelope"></i> emanuele.gramisci.guitarist@gmail.com</span>
+      </div>
+      <div class="cv-hero-actions desktop-only">
+        <a class="cv-hero-btn cv-hero-btn-primary" download href="CV Emanuele Gramisci.pdf">
+          <i class="fas fa-file-pdf"></i> Scarica il CV in PDF
+        </a>
+        <a class="cv-hero-btn" href="mailto:emanuele.gramisci.guitarist@gmail.com">
+          <i class="fas fa-envelope"></i> Contattami
+        </a>
       </div>
     </div>
 
@@ -379,6 +627,26 @@
         <i class="fas fa-file-pdf"></i> Scarica il CV in PDF
       </a>
     </div>
+
+    <!-- Corpo: colonna laterale (solo desktop) + sezioni -->
+    <div class="cv-body">
+
+    <aside class="cv-sidebar desktop-only">
+      <img class="cv-sidebar-photo" src="cv-ritratto-2025.jpg" alt="Emanuele Gramisci suona la chitarra in concerto"
+        width="600" height="900" loading="lazy">
+      <nav class="cv-sidebar-nav" aria-label="Sezioni del curriculum">
+        <a href="#presentazione"><i class="fas fa-user"></i> Presentazione</a>
+        <a href="#esperienza"><i class="fas fa-briefcase"></i> Esperienza</a>
+        <a href="#istruzione"><i class="fas fa-graduation-cap"></i> Istruzione</a>
+        <a href="#premi"><i class="fas fa-trophy"></i> Premi e Concorsi</a>
+        <a href="#progetti"><i class="fas fa-code"></i> Progetti</a>
+        <a href="#competenze-tecniche"><i class="fas fa-cogs"></i> Competenze Tecniche</a>
+        <a href="#lingue"><i class="fas fa-globe"></i> Lingue</a>
+        <a href="#certificazioni"><i class="fas fa-certificate"></i> Certificazioni</a>
+      </nav>
+    </aside>
+
+    <div class="cv-main">
 
     <!-- ======================== -->
     <!-- Presentazione            -->
@@ -548,6 +816,16 @@
           </ul>
         </div>
       </div>
+    </div>
+
+    <!-- Galleria (solo desktop) -->
+    <div class="cv-gallery desktop-only">
+      <img src="galleria-2025-1.jpg" alt="Emanuele Gramisci durante un concerto di chitarra classica" width="600"
+        height="900" loading="lazy">
+      <img src="galleria-2025-2.jpg" alt="Emanuele Gramisci esegue un brano alla chitarra" width="600" height="900"
+        loading="lazy">
+      <img src="galleria-2025-3.jpg" alt="Emanuele Gramisci con la chitarra classica" width="600" height="900"
+        loading="lazy">
     </div>
 
     <!-- ======================== -->
@@ -825,6 +1103,9 @@
       </div>
     </div>
 
+    </div><!-- /.cv-main -->
+    </div><!-- /.cv-body -->
+
     <!-- ======================== -->
     <!-- Privacy                  -->
     <!-- ======================== -->
@@ -837,6 +1118,40 @@
   <footer>
     © 2026 Emanuele Gramisci | <a href="cookie-policy.html">Cookie Policy</a>
   </footer>
+
+  <script>
+    /* Desktop: evidenzia nella colonna laterale la sezione che si sta leggendo */
+    // È attiva l'ultima sezione il cui inizio ha superato il 35% dell'altezza dello schermo.
+    // A fondo pagina le ultime sezioni sono troppo corte per arrivarci: lì vince la voce
+    // cliccata, altrimenti l'ultima.
+    (function () {
+      const links = [...document.querySelectorAll('.cv-sidebar-nav a')];
+      const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+      let clicked = null;
+      let ticking = false;
+
+      function updateActive() {
+        ticking = false;
+        let current = 0;
+        sections.forEach((section, i) => {
+          if (section.getBoundingClientRect().top <= window.innerHeight * 0.35) current = i;
+        });
+        const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom) {
+          current = clicked !== null ? clicked : sections.length - 1;
+        } else {
+          clicked = null;
+        }
+        links.forEach((a, i) => a.classList.toggle('active', i === current));
+      }
+
+      links.forEach((a, i) => a.addEventListener('click', () => { clicked = i; }));
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(updateActive); }
+      }, { passive: true });
+      updateActive();
+    })();
+  </script>
 
 </body>
 </html>
