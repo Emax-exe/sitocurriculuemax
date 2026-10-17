@@ -15,4 +15,9 @@
     root.dataset.theme = next;
     try { localStorage.setItem('theme', next); } catch (e) {}
   };
+
+  // Tutti i pulsanti .theme-toggle delle pagine (barra della home e delle sottopagine)
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('.theme-toggle')) window.toggleTheme();
+  });
 })();

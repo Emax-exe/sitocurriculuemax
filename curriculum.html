@@ -37,29 +37,17 @@
     .cv-page-container {
       max-width: 800px;
       margin: 0 auto;
-      padding: 2rem 1rem 4rem;
+      padding: 2rem var(--page-gutter) 4rem;
     }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--accent-text);
-      font-weight: bold;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      transition: opacity 0.2s;
-    }
-    .back-link:hover { opacity: 0.75; }
 
     /* --- CV Header Card --- */
     .cv-header-card {
       background: linear-gradient(135deg, var(--bordeaux-light) 0%, var(--bordeaux-dark) 100%);
       border-radius: var(--radius-md);
-      padding: 2.5rem 2rem;
-      text-align: center;
+      padding: 2rem 1.5rem;
+      text-align: left;
       color: #fff;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       position: relative;
       overflow: hidden;
       box-shadow: var(--shadow-lg);
@@ -75,23 +63,31 @@
     }
     .cv-header-card h1 {
       position: relative; z-index: 1;
-      font-size: 2rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 0.2rem;
+    }
+    .cv-title-page {
+      display: block;
+      font-size: clamp(1.9rem, 8vw, 2.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
     }
     .cv-header-card .subtitle {
       position: relative; z-index: 1;
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      opacity: 0.85;
+      margin: 0 0 1rem;
     }
     .cv-header-card .info-row {
       position: relative; z-index: 1;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      font-size: 0.9rem;
-      opacity: 0.85;
+      gap: 0.4rem 1rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
     }
     .cv-header-card .info-row span {
       display: inline-flex;
@@ -99,13 +95,97 @@
       gap: 0.4rem;
     }
 
-    /* --- CV Download Banner --- */
-    .cv-download-banner {
+    .cv-hero-actions {
+      position: relative; z-index: 1;
       display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
       flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.5rem;
+    }
+    .cv-hero-actions .hero-btn {
+      flex: 1 1 auto;
+      padding: 0.75rem 1.3rem;
+    }
+
+    /* --- Indice delle sezioni: su mobile barra di schede fissa in alto --- */
+    html:has(body.cv-page) {
+      scroll-padding-top: 4.5rem;
+    }
+    .cv-sidebar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      margin: 0 calc(-1 * var(--page-gutter)) 1.5rem;
+      padding: 0.65rem var(--page-gutter);
+      background: var(--nav-bg);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      backdrop-filter: blur(14px) saturate(1.4);
+      border-bottom: 1px solid var(--line);
+    }
+    .cv-sidebar-photo {
+      display: none;
+    }
+    .cv-sidebar-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cv-sidebar-nav::-webkit-scrollbar {
+      display: none;
+    }
+    .cv-sidebar-nav a {
+      flex: none;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.45rem 0.9rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text-color);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition), border-color var(--transition);
+    }
+    .cv-sidebar-nav a i {
+      color: var(--accent-text);
+      font-size: 0.8rem;
+    }
+    .cv-sidebar-nav a.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .cv-sidebar-nav a.active i {
+      color: #fff;
+    }
+
+    /* --- Galleria: su mobile scorre in orizzontale --- */
+    .cv-gallery {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      margin: 0 calc(-1 * var(--page-gutter)) 1.5rem;
+      padding: 0 var(--page-gutter);
+      scroll-padding: 0 var(--page-gutter);
+    }
+    .cv-gallery::-webkit-scrollbar {
+      display: none;
+    }
+    .cv-gallery img {
+      flex: 0 0 72%;
+      width: 72%;
+      max-width: 320px;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      scroll-snap-align: start;
     }
 
     /* --- Section Card --- */
@@ -113,7 +193,7 @@
       background: var(--card-bg);
       border-radius: var(--radius-md);
       padding: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       box-shadow: var(--shadow-md);
       border: 1px solid rgba(128, 0, 32, 0.06);
       transition: transform var(--transition), box-shadow var(--transition);
@@ -344,19 +424,15 @@
 
     /* --- Responsive --- */
     @media (max-width: 600px) {
-      .cv-header-card h1 { font-size: 1.5rem; }
-      .cv-header-card .subtitle { font-size: 0.95rem; }
-      .cv-header-card .info-row { font-size: 0.82rem; }
       .cv-section { padding: 1.5rem 1rem; }
       .cv-section h2 { font-size: 1.15rem; }
       .timeline-entry .entry-title { font-size: 0.97rem; }
     }
 
     /* ========================================
-       DESKTOP (≥ 1024px) — sotto questa larghezza vale il layout qui sopra.
-       Il markup solo-desktop usa la classe .desktop-only (vedi stile.css).
+       DESKTOP (≥ 1024px, solo in orizzontale) — altrimenti vale il layout qui sopra.
        ======================================== */
-    @media (min-width: 1024px) {
+    @media (min-width: 1024px) and (orientation: landscape) {
       html:has(body.cv-page) {
         scroll-padding-top: 1.5rem;
       }
@@ -385,12 +461,7 @@
       }
 
       .cv-title-page {
-        display: block;
         font-size: clamp(2rem, 2.8vw, 2.5rem);
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        line-height: 1.1;
-        margin-bottom: 0.5rem;
       }
 
       .cv-header-card .subtitle {
@@ -408,44 +479,16 @@
       .cv-hero-actions {
         grid-column: 2;
         grid-row: 1 / span 2;
-        display: flex;
         gap: 0.75rem;
-        position: relative;
-        z-index: 1;
+        margin: 0;
       }
 
-      .cv-hero-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.6rem;
+      .cv-hero-actions .hero-btn {
         padding: 0.7rem 1.4rem;
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        border-radius: 999px;
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all var(--transition);
       }
 
-      .cv-hero-btn:hover {
-        background: rgba(255, 255, 255, 0.14);
-        transform: translateY(-2px);
-      }
-
-      .cv-hero-btn-primary {
-        background: #fff;
-        border-color: #fff;
-        color: var(--bordeaux);
-      }
-
-      .cv-hero-btn-primary:hover {
-        background: #f6e9ed;
-      }
-
-      /* il pulsante PDF è già nell'intestazione */
-      .cv-download-banner {
-        display: none;
+      .cv-page .topbar {
+        padding-inline: max(2rem, calc((100vw - 1200px) / 2 + 2rem));
       }
 
       /* --- Corpo: colonna laterale fissa + sezioni --- */
@@ -457,9 +500,14 @@
       }
 
       .cv-sidebar {
-        display: block;
-        position: sticky;
         top: 1.5rem;
+        z-index: auto;
+        margin: 0;
+        padding: 0;
+        background: none;
+        -webkit-backdrop-filter: none;
+        backdrop-filter: none;
+        border: none;
       }
 
       .cv-sidebar-photo {
@@ -475,8 +523,8 @@
       }
 
       .cv-sidebar-nav {
-        display: flex;
         flex-direction: column;
+        overflow: visible;
         gap: 0.15rem;
         padding: 0.75rem;
         background: var(--card-bg);
@@ -489,7 +537,9 @@
         align-items: center;
         gap: 0.75rem;
         padding: 0.6rem 0.85rem;
+        border: none;
         border-radius: 10px;
+        white-space: normal;
         color: var(--text-color);
         text-decoration: none;
         font-size: 0.95rem;
@@ -500,7 +550,7 @@
       .cv-sidebar-nav a i {
         width: 1.1rem;
         text-align: center;
-        color: var(--accent-text);
+        font-size: 1rem;
       }
 
       .cv-sidebar-nav a:hover {
@@ -567,11 +617,14 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 1.25rem;
-        margin-bottom: 2rem;
+        overflow: visible;
+        margin: 0 0 2rem;
+        padding: 0;
       }
 
       .cv-gallery img {
         width: 100%;
+        max-width: none;
         height: auto;
         aspect-ratio: 3 / 4;
         object-fit: cover;
@@ -586,7 +639,7 @@
     }
 
     /* Schermi desktop bassi: foto laterale quadrata, così la colonna resta tutta visibile */
-    @media (min-width: 1024px) and (max-height: 850px) {
+    @media (min-width: 1024px) and (orientation: landscape) and (max-height: 850px) {
       .cv-sidebar-photo {
         aspect-ratio: 1;
       }
@@ -594,16 +647,21 @@
   </style>
 </head>
 <body class="cv-page">
+  <nav class="topbar" aria-label="Navigazione del sito">
+    <a class="nav-brand" href="index.html"><span class="nav-monogram">EG</span><span class="nav-brand-name">Emanuele Gramisci</span></a>
+    <div class="nav-tools">
+      <a class="topbar-home" href="index.html"><i class="fas fa-arrow-left"></i> Home</a>
+      <button type="button" class="nav-icon-btn theme-toggle" aria-label="Cambia tema chiaro/scuro"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+    </div>
+  </nav>
 
   <div class="cv-page-container">
-
-    <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Torna alla home</a>
 
     <!-- ======================== -->
     <!-- Header Card              -->
     <!-- ======================== -->
     <div class="cv-header-card">
-      <h1><span class="cv-title-page desktop-only">Curriculum Vitae</span><span class="cv-title-name">Emanuele Gramisci</span></h1>
+      <h1><span class="cv-title-page">Curriculum Vitae</span><span class="cv-title-name">Emanuele Gramisci</span></h1>
       <p class="subtitle">Concertista e Docente di Chitarra Classica</p>
       <div class="info-row">
         <span><i class="fas fa-birthday-cake"></i> 08/03/1998</span>
@@ -611,27 +669,20 @@
         <span><i class="fas fa-phone"></i> (+39) 353 476 7603</span>
         <span><i class="fas fa-envelope"></i> emanuele.gramisci.guitarist@gmail.com</span>
       </div>
-      <div class="cv-hero-actions desktop-only">
-        <a class="cv-hero-btn cv-hero-btn-primary" download href="CV Emanuele Gramisci.pdf">
+      <div class="cv-hero-actions">
+        <a class="hero-btn hero-btn-primary" download href="CV Emanuele Gramisci.pdf">
           <i class="fas fa-file-pdf"></i> Scarica il CV in PDF
         </a>
-        <a class="cv-hero-btn" href="mailto:emanuele.gramisci.guitarist@gmail.com">
+        <a class="hero-btn" href="mailto:emanuele.gramisci.guitarist@gmail.com">
           <i class="fas fa-envelope"></i> Contattami
         </a>
       </div>
     </div>
 
-    <!-- Download PDF -->
-    <div class="cv-download-banner">
-      <a class="contact-button" download href="CV Emanuele Gramisci.pdf">
-        <i class="fas fa-file-pdf"></i> Scarica il CV in PDF
-      </a>
-    </div>
-
-    <!-- Corpo: colonna laterale (solo desktop) + sezioni -->
+    <!-- Corpo: indice delle sezioni (mobile: barra di schede fissa in alto; desktop: colonna laterale) + sezioni -->
     <div class="cv-body">
 
-    <aside class="cv-sidebar desktop-only">
+    <aside class="cv-sidebar">
       <img class="cv-sidebar-photo" src="cv-ritratto-2025.jpg" alt="Emanuele Gramisci suona la chitarra in concerto"
         width="600" height="900" loading="lazy">
       <nav class="cv-sidebar-nav" aria-label="Sezioni del curriculum">
@@ -818,8 +869,8 @@
       </div>
     </div>
 
-    <!-- Galleria (solo desktop) -->
-    <div class="cv-gallery desktop-only">
+    <!-- Galleria (mobile: scorrimento orizzontale) -->
+    <div class="cv-gallery">
       <img src="galleria-2025-1.jpg" alt="Emanuele Gramisci durante un concerto di chitarra classica" width="600"
         height="900" loading="lazy">
       <img src="galleria-2025-2.jpg" alt="Emanuele Gramisci esegue un brano alla chitarra" width="600" height="900"
@@ -1120,14 +1171,16 @@
   </footer>
 
   <script>
-    /* Desktop: evidenzia nella colonna laterale la sezione che si sta leggendo */
+    /* Evidenzia nell'indice (schede su mobile, colonna laterale su desktop) la sezione che si sta leggendo */
     // È attiva l'ultima sezione il cui inizio ha superato il 35% dell'altezza dello schermo.
     // A fondo pagina le ultime sezioni sono troppo corte per arrivarci: lì vince la voce
     // cliccata, altrimenti l'ultima.
     (function () {
       const links = [...document.querySelectorAll('.cv-sidebar-nav a')];
       const sections = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+      const nav = document.querySelector('.cv-sidebar-nav');
       let clicked = null;
+      let shown = null;
       let ticking = false;
 
       function updateActive() {
@@ -1143,6 +1196,12 @@
           clicked = null;
         }
         links.forEach((a, i) => a.classList.toggle('active', i === current));
+        // Mobile: la barra di schede scorre per mostrare la scheda attiva
+        if (current !== shown && nav.scrollWidth > nav.clientWidth) {
+          const a = links[current];
+          nav.scrollTo({ left: a.offsetLeft - (nav.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+        }
+        shown = current;
       }
 
       links.forEach((a, i) => a.addEventListener('click', () => { clicked = i; }));

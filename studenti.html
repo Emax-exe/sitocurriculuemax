@@ -21,17 +21,6 @@
       margin: 0 auto;
       padding: 2rem 1rem 4rem;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--accent-text);
-      font-weight: bold;
-      text-decoration: none;
-      margin-bottom: 2rem;
-      transition: opacity 0.2s;
-    }
-    .back-link:hover { opacity: 0.75; }
 
     .hero-card {
       background: var(--card-bg);
@@ -146,10 +135,15 @@
   </style>
 </head>
 <body>
+  <nav class="topbar" aria-label="Navigazione del sito">
+    <a class="nav-brand" href="index.html"><span class="nav-monogram">EG</span><span class="nav-brand-name">Emanuele Gramisci</span></a>
+    <div class="nav-tools">
+      <a class="topbar-home" href="index.html"><i class="fas fa-arrow-left"></i> Home</a>
+      <button type="button" class="nav-icon-btn theme-toggle" aria-label="Cambia tema chiaro/scuro"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+    </div>
+  </nav>
 
   <div class="students-container">
-
-    <a class="back-link" href="index.html"><i class="fas fa-arrow-left"></i> Torna alla home</a>
 
     <div class="hero-card">
       <div class="hero-icon">🎓</div>

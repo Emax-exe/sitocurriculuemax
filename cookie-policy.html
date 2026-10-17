@@ -17,17 +17,6 @@
       margin: 2rem auto;
       padding: 0 1rem 4rem;
     }
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--accent-text);
-      font-weight: bold;
-      text-decoration: none;
-      margin-bottom: 1.5rem;
-      transition: opacity 0.2s;
-    }
-    .back-link:hover { opacity: 0.75; }
     .policy-section {
       background: var(--card-bg);
       border-radius: 12px;
@@ -65,9 +54,14 @@
   </style>
 </head>
 <body>
+  <nav class="topbar" aria-label="Navigazione del sito">
+    <a class="nav-brand" href="index.html"><span class="nav-monogram">EG</span><span class="nav-brand-name">Emanuele Gramisci</span></a>
+    <div class="nav-tools">
+      <a class="topbar-home" href="index.html"><i class="fas fa-arrow-left"></i> Home</a>
+      <button type="button" class="nav-icon-btn theme-toggle" aria-label="Cambia tema chiaro/scuro"><i class="fas fa-moon"></i><i class="fas fa-sun"></i></button>
+    </div>
+  </nav>
   <div class="policy-container">
-
-    <a class="back-link" href="index.html">← Torna alla home</a>
 
     <h1 style="color: var(--accent-text);">Cookie Policy</h1>
     <p class="update-date">Ultimo aggiornamento: ottobre 2026</p>
