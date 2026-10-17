@@ -253,6 +253,18 @@
     }
     window.addEventListener('scroll', updateNav, { passive: true });
     updateNav();
+
+    /* --- Desktop: Social e Contatti sono nella stessa schermata di Eventi,
+       quindi i loro link scorrono allo stesso punto --- */
+    const desktopLayout = window.matchMedia('(min-width: 1024px)');
+    document.querySelectorAll('a[href="#social"], a[href="#contatti"]').forEach(link => {
+      link.addEventListener('click', e => {
+        if (!desktopLayout.matches) return;
+        e.preventDefault();
+        document.getElementById('eventi').scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', link.getAttribute('href'));
+      });
+    });
   </script>
 
   <!-- Image modal -->
