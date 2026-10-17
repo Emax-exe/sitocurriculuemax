@@ -2,3 +2,6 @@
 
 # Foto originali (il sito usa le versioni ottimizzate nella radice)
 foto nuove da aggiungere/
+
+# Configurazione locale di Claude Code (anteprima del sito), non fa parte del sito
+.claude/
